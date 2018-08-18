@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Rubik');
+
+.font-primary {
+	color: #5659A6!important;
+}
+.font-danger {
+	color: #FF6AB9!important;
+}
+h1,h2,h3,h4,h5 {
+	font-family: 'Rubik', sans-serif;
+}
+.btn-purple-secondary{
+	color: #fff;
+	background-color: #5659A6;
+	border-color: #5659A6!important;
+	border-radius: 50px!important;
+	box-sizing: border-box;
+	padding: 8px 30px!important;
+}
+.btn-purple-secondary:hover{
+	box-shadow: 0px 1px 4px rgba(0,0,0,0.6);
+	cursor: pointer;
+}
+.btn-green-secondary{
+	color: #fff;
+	background-color: #43DDC1;
+	border-color: #43DDC1!important;
+	border-radius: 50px!important;
+	box-sizing: border-box;
+	padding: 8px 30px!important;
+}
+.btn-green-secondary:hover{
+	box-shadow: 0px 1px 4px rgba(0,0,0,0.6);
+	cursor: pointer;
+}
+.btn-warning-secondary{
+	color: #fff;
+	background-color: #F8BB56;
+	border-color: #F8BB56!important;
+	border-radius: 50px!important;
+	box-sizing: border-box;
+	padding: 8px 30px!important;
+}
+.btn-warning-secondary:hover{
+	box-shadow: 0px 1px 4px rgba(0,0,0,0.6);
+	cursor: pointer;
+}
+.btn-close-secondary{
+	border-radius: 50px!important;
+	box-sizing: border-box;
+	padding: 8px 30px!important;
+}
+.btn-close-secondary:hover{
+	box-shadow: 0px 1px 4px rgba(0,0,0,0.6);
+	cursor: pointer;
+}
+.btn-outline-pink-secondary{
+	color: #FF6AB9;
+	border: 1px solid #FF6AB9!important;
+	border-radius: 50px!important;
+	box-sizing: border-box;
+	padding: 8px 30px!important;
+	background: none!important;
+}
+.btn-outline-pink-secondary:hover{
+	color: #fff;
+	background-color: #FF6AB9!important;
+	border-color: #FF6AB9;
+	cursor: pointer;
+}
+.btn-outline-yellow-secondary{
+	color: #F8BB56;
+	border: 1px solid #F8BB56!important;
+	border-radius: 50px!important;
+	box-sizing: border-box;
+	padding: 8px 30px!important;
+	background: none!important;
+}
+.btn-outline-yellow-secondary:hover{
+	color: #fff;
+	background-color: #F8BB56!important;
+	border-color: #F8BB56;
+	cursor: pointer;
+}
+/*------------------------------------------------------------*/
+.h-full {
+	height: 100vh!important;
+}
+.bg-gradient-box {
+	background: linear-gradient(to bottom left, #A659C9, #5659A6);
+	color: #fff;
+}
+/*-----------Estilos para botones ----------------------*/
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+.btn-purple-danger {
+	background-color: #fff;
+	border-color: #fff;
+	color: #FF6AB9;
+}
+.btn-purple-danger:hover {
+	cursor: pointer;
+	color: #fff;
+	background-color: #FF6AB9!important;
+}
+.btn-purple-warning {
+	background-color: #fff;
+	border-color: #fff;
+	color: #F8BB56;
+}
+.btn-purple-warning:hover {
+	color: #fff;
+	background-color:#F8BB56; 
+	cursor: pointer;
+}
+.btn-purple-info{
+	color: #43DDC1;
+	background-color: #fff;
+	border-color: #fff;
+}
+.btn-purple-info:hover{
+	background-color: #43DDC1;
+	color: #fff;
+	cursor: pointer;
+}
+/*---------------------------------------------------------*/
+
+/*estilos de card al inicio con SVG*/
+.card .card-img-holder {
+	position: relative!important;
+}
+.card.card-img-holder .card-img-absolute {
+	position: absolute!important;
+	top: 0;
+	right: 0;
+	height: 100%;
+}
+.card-body-pad {
+	padding: 2.5rem 2.5rem!important;
+}
+.card-title{
+	color: #000;
+	margin-bottom: .75rem!important;
+	text-transform: capitalize;
+	font-family: "ubuntu-medium", sans-serif!important;
+	font-size: 1.125rem;
+}
+/*estilos para fondos---------<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-----*/
+.bg-gradient-primary{
+	background: linear-gradient(to right, #da8cff, #9a55ff);
+}
+.bg-gradient-danger{
+	background: linear-gradient(to right, #ffbf96, #fe7096);
+}
+.bg-gradient-info{
+	background: linear-gradient(to right, #90caf9, #047edf 99%);
+}
+.bg-gradient-success{
+	background: linear-gradient(to right, #84d9d2, #07cdae);
+}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+.page-title{
+	color: #000;
+	font-size: 1.125rem;
+	margin-bottom: 0;
+}
+.page-title .page-title-icon{
+	display: inline-block;
+	width: 36px;
+	height: 36px;
+	border-radius: 4px;
+	text-align: center!important;
+	box-shadow: 0px 3px 8.3px 0.7px rgba(163, 93, 255, 0.35);
+}
+.page-title .page-title-icon i{
+	font-size: .9375rem;
+	line-height: 36px;
+}
+.footer {
+	padding: 30px 1rem;
+	font-size: calc(0.875rem - 0.05rem);
+	font-family: "ubuntu-regular", sans-serif;
+	border-top: 1px solid #dccedf;
+}
+
+/*----------------------------ESTILO PARA INDEX-LOGIN----------------------*/
+.register-bg-half{
+	background-image: url(img/LoginGAS.jpg)!important;
+	background-size: cover;
+}
+.register-bg-gas{
+	background-image: url(img/madre2gas.jpg)!important;
+	background-size: cover!important;
+}
+.container-scroller {
+	overflow: hidden;
+}
+.page-body-wrapper.full-page-wrapper{
+	width: 100%;
+	min-height: 100vh;
+}
+.page-body-wrapper{
+	display: flex;
+	flex-direction: row;
+	padding-left: 0;
+	padding-right: 0;
+}
+.auth .auth-img-bg{
+	padding: 0;
+}
+.content-wrapper {
+	width: 100%;
+	flex-grow: 1;
+
+}
+.flex-grow{
+	flex-grow: 1;
+}
+@media (min-width: 768px){
+	.auth.auth-img-bg .auth-form-transparent{
+		width: 55%;
+		margin: auto;
+	}
+	.auth.auth-img-bg .auth-form-register{
+		width: 80%;
+		margin: auto;
+	}
+}

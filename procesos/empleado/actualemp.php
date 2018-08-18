@@ -1,0 +1,35 @@
+<?php 
+	require '../../config/conexion.php';
+	$idempfrm =$_POST['idemP'];
+	$nmempfrm = $_POST['nomemP'];
+	$apempfrm = $_POST['apemP'];
+	$sxempfrm = $_POST['sexemP'];
+	$fnempfrm = $_POST['fnemP'];
+	$ndempfrm = $_POST['dniemP'];
+	$drempfrm = $_POST['diremP'];
+	$foempfrm = $_POST['telfemP'];
+	$elempfrm = $_POST['emailemP'];
+	$acempfrm = $_POST['accemP'];
+	$psempfrm = $_POST['passemP'];
+	$idcgefrm = $_POST['cargoemP'];
+
+	$upd = $con->query("UPDATE empleado SET nom_emp='$nmempfrm',
+											ape_emp='$apempfrm',
+											sexo_emp='$sxempfrm',
+											fechnac_emp='$fnempfrm',
+											numdoc_emp='$ndempfrm',
+											dir_emp='$drempfrm',
+											telf_emp='$foempfrm',
+											email_emp='$elempfrm',
+											acceso_emp='$acempfrm',
+											password_emp='$psempfrm',
+											id_cargo='$idcgefrm'
+										WHERE id_emp= '$idempfrm' ");
+	if ($upd) {
+			echo json_encode(array('error' => false));
+		}else{
+			echo json_encode(array('error' => true));
+		}
+	
+$con->close();
+ ?>
