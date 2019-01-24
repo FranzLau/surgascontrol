@@ -89,7 +89,7 @@
           <div class="card-body card-body-pad">
             <div class="row">
               <div class="col-sm-8">
-                <p class="font-primary"><i class="fas fa-warehouse mr-2"></i> Productos</p>
+                <p class="font-primary"><i class="fas fa-warehouse mr-2"></i> Lista de Productos</p>
               </div>
               <div class="col-sm-4 text-right">
                 <a href="balones.php"><i class="fas fa-ellipsis-v font-primary"></i></a>
@@ -133,7 +133,7 @@
           <div class="card-body card-body-pad">
             <div class="row">
               <div class="col-sm-8">
-                <p class="font-primary"><i class="fas fa-truck mr-2"></i> Repartidores</p>
+                <p class="font-primary"><i class="fas fa-truck mr-2"></i> Repartidores de Hoy</p>
               </div>
               <div class="col-sm-4 text-right">
                 <a href="repartidor.php"><i class="fas fa-ellipsis-v font-primary"></i></a>

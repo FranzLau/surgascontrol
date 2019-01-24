@@ -14,6 +14,7 @@
 	}else{
 		$parte = $con->query("INSERT INTO repartidor (placa_re,zona_re,fecha_re,cantidad_re,id_emp) VALUES ('$formpla','$formzon','$nowfech','$formcant','$formchof')");
 		if ($parte) {
+			//restar balones 
 			echo json_encode(array('error' => false));
 		}else{
 			echo json_encode(array('error' => true));

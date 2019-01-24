@@ -53,6 +53,52 @@
 			return $r;
 		}
 
+		public function creaPartida() {
+			require 'conexion.php';
+			date_default_timezone_set('America/Lima'); 
+			$fechpar = date('Y-m-d');
+			$emple=$_SESSION['loggedIN']['id_emp'];
+			$idpart = self::creaFolioPartida();
+			$datos = $_SESSION['tablaPartidasTemp'];
+			$r=0;
+			for ($i=0; $i < count($datos) ; $i++){
+				$d=explode("||", $datos[$i]);
+				$sql=$con->query("INSERT INTO repartidor (id_repartidor,
+															placa_re,
+															id_producto,
+															fecha_re,
+															cantidad_re,
+															id_emp,
+															tipo_prod)
+								VALUES ('$idpart',
+										'$d[0]',
+										'$d[5]',
+										'$fechpar',
+										'$d[3]',
+										'$emple',
+										'$d[4]')");
+				$r = $r + $sql;
+				self::descuentaCantidadPartida($d[5],$d[3],$d[4]);
+			}
+			return $r;
+		}
+
+		public function descuentaCantidadPartida($idprodu,$cantidad,$tipobal){
+			require 'conexion.php';
+			$sql = $con->query("SELECT stock_llenos,stock_vacios FROM producto WHERE id_producto='$idprodu' ");
+			$result = $sql->fetch_row();
+			$llenos = $result[0];
+			$vacios = $result[1];
+			if ($tipobal == "cg"){
+				$newllenos = abs($cantidad - $llenos);
+
+				$sql = $con->query("UPDATE producto SET stock_llenos='$newllenos' WHERE id_producto='$idprodu' ");
+			}else {
+				$newvacios = abs($cantidad - $vacios);
+				$sql = $con->query("UPDATE producto SET stock_vacios='$newvacios' WHERE id_producto='$idprodu' ");
+			}
+		}
+
 		public function obtenDetallesRepartidor($idrepartidor){
 			require 'conexion.php';
 			$sql = $con->query("SELECT SUM(llega_vacio),SUM(fierro_prestado),SUM(fierro_vendido) FROM detallerepartidor WHERE id_repartidor='$idrepartidor'");
@@ -88,6 +134,17 @@
 		public function creaFolio(){
 			require 'conexion.php';
 			$sql = $con->query("SELECT id_detalleventa FROM detalleventa GROUP BY id_detalleventa DESC ");
+			$result = $sql->fetch_row();
+			$id = $result[0];
+			if ($id=="" or $id==null or $id==0) {
+				return 1;
+			}else{
+				return $id + 1;
+			}
+		}
+		public function creaFolioPartida(){
+			require 'conexion.php';
+			$sql = $con->query("SELECT id_repartidor FROM repartidor GROUP BY id_repartidor DESC ");
 			$result = $sql->fetch_row();
 			$id = $result[0];
 			if ($id=="" or $id==null or $id==0) {
