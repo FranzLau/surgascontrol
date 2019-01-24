@@ -170,7 +170,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recargas</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="repartidor.php"><i class="fas fa-fire"></i> Registro de Partidas</a>
-              <a class="dropdown-item" href="#"><i class="fas fa-fire"></i> Mis Partidas</a>
+              <a class="dropdown-item" href="partidas.php"><i class="fas fa-fire"></i> Mis Partidas</a>
               <a class="dropdown-item" href="recarga.php"><i class="fas fa-fire"></i> Recargar</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="liquidar.php"><i class="fas fa-fire"></i> Liquidar Chofer</a>

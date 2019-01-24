@@ -10,18 +10,17 @@
 </head>
 <body style="background: #F2F4F4">
 	<?php include('navbar.php'); ?>
-	<?php include('../../modal/modalviewrecarga.php'); ?>
-	<?php include('../../modal/modalrepartidor.php'); ?>
+	
 	<div class="container">
 		<div class="row mt-5">
 			<div class="col-sm-6">
 				<h4 class="font-primary">Registro de <strong>Partida</strong></h4>
 			</div>
 			<div class="col-sm-6 text-right">
-				<p>Hola</p>
+				<p class="my-auto font-primary">Registro de Partida<i class="fas fa-chevron-right fa-xs ml-2 mr-2"></i><a href="partidas.php">Mis Partidas</a></p>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row mt-3">
       <div class="col-sm-6">
         <div class="card">
           <div class="card-body">
@@ -106,22 +105,6 @@
         <div id="TablaPartidaTempLoad"></div>
       </div>
 		</div>	
-		<!--
-		<div class="row mt-5">
-      <div class="col-sm-6 text-center text-lg-left d-md-flex">
-        <h4 class="my-auto font-primary">Lista de <strong>Repartidores</strong></h4>
-      </div>
-      <div class="col-sm-6 text-center text-lg-right">
-        <button type="button" class="btn btn-green-secondary" data-toggle="modal" data-target="#ModalRepartidor"><i class="far fa-file fa-sm mr-2"></i> Nuevo Repartidor</button>
-      </div>
-    </div>
-    <hr>
-		<div class="row mt-5">
-			<div class="col-sm-12">
-				<div id="tabRecarga" class="table-responsive"></div>
-			</div>
-		</div>
-    -->
 		<footer class="footer">
       <div class="d-sm-flex justify-content-sm-between justify-content-center">
         <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
@@ -137,7 +120,7 @@
 	<?php include('scripts.php'); ?>
 	<script>
 		$(document).ready(function() {
-			$('#tabRecarga').load('../componentes/tablerecarga.php');
+			
 			$('#TablaPartidaTempLoad').load("../componentes/tablePartidaTemp.php");
 		});
 	</script>
