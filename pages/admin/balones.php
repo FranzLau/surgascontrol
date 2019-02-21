@@ -21,7 +21,7 @@
             <h4 class="my-auto font-primary">Lista de<strong> Productos</strong></h4>
           </div>
           <div class="col-sm-6 text-center text-lg-right">
-            <a href="javascript:void(0);" class="btn btn-outline-pink-secondary mr-3" onclick="printPageArea('printableArea')"><i class="fas fa-cloud-download-alt"></i> Exportar</a>
+            
             <button type="button" class="btn btn-green-secondary" data-toggle="modal" data-target="#balonModalCenter"><i class="far fa-file fa-sm mr-2"></i> Nuevo Producto</button>
           </div>
         </div>
@@ -31,17 +31,7 @@
             <div id="tableBal" class="table-responsive"></div>
           </div>
         </div>
-        <footer class="footer mt-5">
-          <div class="d-sm-flex justify-content-sm-between justify-content-center">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
-              Copyright <i class="far fa-copyright"></i>2018 
-              <a href="#" target="_blank">SURGAS</a>. Todos los derechos reservados
-            </span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-              Desarrollado <i class="fas fa-code text-danger"></i> por Franz Cruz <i class="fas fa-laptop text-danger"></i>
-            </span>
-          </div>
-        </footer>
+        
         </div>
       </div>
 
@@ -52,19 +42,7 @@
       });
     </script>
     <script>
-      function printPageArea(areaID){
-          var printContent = document.getElementById(areaID);
-          var WinPrint = window.open('', '', 'width=900,height=650');
-          WinPrint.document.write('<html><head><title>' + document.title + '</title>');
-          WinPrint.document.write('<link rel="stylesheet" href="assets/css/bootstrap.min.css">');
-          WinPrint.document.write('</head><body >');
-          WinPrint.document.write(printContent.innerHTML);
-          WinPrint.document.write('</body></html>');
-          WinPrint.document.close();
-          WinPrint.focus();
-          WinPrint.print();
-          WinPrint.close();
-      }
+      
       function agregaeditarbal(idbal){
         $.ajax({
           url: '../../procesos/balon/editbal.php',

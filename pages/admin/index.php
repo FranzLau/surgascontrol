@@ -23,7 +23,7 @@
       </div>
     </div>
    <!---****************************************************************************-->
-    <div class="row mt-5">
+    <div class="row mt-4">
       <div class="col-sm-4">
         <div class="card card-img-holder bg-gradient-danger text-white border-0">
           <div class="card-body card-body-pad">
@@ -83,6 +83,7 @@
       </div>
     </div>
    <!---****************************************************************************-->
+   <!--
     <div class="row mt-5">
       <div class="col-sm-6">
         <div class="card border-0">
@@ -175,8 +176,9 @@
         </div>
       </div>
     </div>
+    -->
  <!---****************************************************************************-->
-    <div class="row mt-5">
+    <div class="row mt-4">
       <div class="col-sm-12">
         <div class="card bg-gradient-box">
           <div class="card-body">
@@ -190,7 +192,7 @@
       </div>
     </div>
     
-    <footer class="footer mt-5">
+    <footer class="footer mt-4">
       <div class="d-sm-flex justify-content-sm-between justify-content-center">
         <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
           Copyright <i class="far fa-copyright"></i>2018 

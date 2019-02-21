@@ -5,32 +5,30 @@ session_start();
 date_default_timezone_set('America/Lima');
 $obj = new ventas();
 $nowfecha = date('Y-m-d');
-$sql = $con->query("SELECT * FROM repartidor WHERE fecha_re='$nowfecha' ");
+$sqlr = $con->query("SELECT * FROM repartidor WHERE fecha_re='$nowfecha' GROUP BY id_repartidor ");
  ?>
 <table class="table table-hover table-sm" id="tablerec">
   <thead class="font-primary">
     <tr>
       <th>FECHA</th>
       <th>CHOFER</th>
-      <th>PLACA</th>
-      <th>ZONA</th>
+      <th>PRODUCTO</th>
       <th>CANTIDAD</th>
       <th>ACCIONES</th>
     </tr>
   </thead>
   <tbody class="bg-white">
-    <?php while($verep = $sql->fetch_row()){ ?>
+    <?php while($verep = $sqlr->fetch_row()){ ?>
     <tr>
-      <td><?php echo $verep[3] ?></td>
-      <td><?php echo $obj->nombreEmpleado($verep[5]) ?></td>
-      <td><?php echo $verep[1] ?></td>
       <td><?php echo $verep[2] ?></td>
-      <td><?php echo $verep[4] ?></td>
-      <td class="text-center">
+      <td><?php echo $obj->nombreEmpleado($verep[4]) ?></td>
+      <td><?php echo $obj->nombreProducto($verep[1]) ?></td>
+      <td><?php echo $obj->totalPartida($verep[0]) ?></td>
+      <td class="text-left">
         <div class="btn-group" role="group" aria-label="Basic example">
-          <button class="btn btn-purple-info btn-sm" data-toggle="modal" data-target="#VerRecargasModal" onclick="obtenDatosChofer('<?php echo $verep[0] ?>')"><i class="fas fa-eye"></i></button>
+          <!--<button class="btn btn-purple-info btn-sm" data-toggle="modal" data-target="#VerRecargasModal" onclick="obtenDatosChofer('<?php echo $verep[0] ?>')"><i class="fas fa-eye"></i></button>-->
           <button class="btn btn-purple-warning btn-sm"><i class="fas fa-edit"></i></button>
-          <button class="btn btn-purple-danger btn-sm" onclick="eliminarRecarga('<?php echo $verep[0] ?>')" ><i class="fas fa-trash"></i></button>
+          <button class="btn btn-purple-danger btn-sm" onclick="eliminaPartida('<?php echo $verep[0] ?>')" ><i class="fas fa-trash"></i></button>
         </div>
       </td>
     </tr>

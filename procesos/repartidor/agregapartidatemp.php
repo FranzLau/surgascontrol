@@ -2,7 +2,7 @@
     session_start();
     require '../../config/conexion.php';
     $parChofrm=$_POST['parChof'];
-	$placafrm=$_POST['parplaca'];
+	
 	$producfrm=$_POST['parprodu'];
     $cantidfrm=$_POST['parcantidad'];
     $tipobal=$_POST['tipobal'];
@@ -15,12 +15,12 @@
 	$p = $sql->fetch_row();
     $nproducto = $p[0];
     
-    $articulo = $placafrm."||".
-				$nproducto."||".
+    $articulo = $nproducto."||".
 				$emple."||".
                 $cantidfrm."||".
                 $tipobal."||".
-                $producfrm;
+                $producfrm."||".
+                $parChofrm;
                 
     $sql=$con->query("SELECT stock_llenos FROM producto WHERE id_producto= '$producfrm' ");
     $st = $sql->fetch_row();

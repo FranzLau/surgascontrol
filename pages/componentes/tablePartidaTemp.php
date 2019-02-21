@@ -2,7 +2,7 @@
 	session_start();
  ?>
  <div class="row">
-  <div class="col-sm-12">
+  <div class="col-sm-8">
     <div class="card">
       <div class="card-body">
         <table class="table table-sm table-hover">
@@ -23,15 +23,15 @@
                           $d= explode("||", @$key);
               ?>
               <tr>
+                  <td><?php echo $d[2]; ?></td>
+                  <td><?php echo $d[0]; ?></td>
                   <td><?php echo $d[3]; ?></td>
-                  <td><?php echo $d[1]; ?></td>
-                  <td><?php echo $d[4]; ?></td>
                   <td><button class="btn btn-danger btn-sm" onclick="quitarPar('<?php echo $i; ?>')"><i class="fas fa-trash"></i></button></td>
               </tr>
               <?php
-                  $total = $total + $d[3];
+                  $total = $total + $d[2];
                   $i++; 
-                  $chofe = $d[2];
+                  $chofe = $d[1];
                   }
                   endif;
               ?>
@@ -40,21 +40,20 @@
       </div>
     </div>
   </div>
- </div>
- <hr>
- <div class="row mt-3">
-  <div class="col-sm-12">
+  <div class="col-md-4">
     <div class="card">
-      <div class="card-header bg-dark text-center">
-          <h3 style="color: #6FF60B">Total: <?php echo $total; ?> </h3>
-      </div>
-      <div class="card-body">
-          <p id="chofepart"></p>
-          <button class="btn btn-success w-100" onclick="crearPartida()"><i class="fas fa-dollar-sign"></i> Generar Partida</button>
-      </div>
+        <div class="card-header bg-dark text-center">
+            <h3 style="color: #6FF60B">Total: <?php echo $total; ?> </h3>
+        </div>
+        <div class="card-body">
+            <p id="chofepart"></p>
+            <button class="btn btn-success w-100" onclick="crearPartida()"><i class="fas fa-truck"></i> Generar Partida</button>
+        </div>
+    </div>
   </div>
-  </div>
- </div>
+
+</div>
+
  <script>
   $(document).ready(function() {
     nombre = "<?php echo @$chofe ?>";

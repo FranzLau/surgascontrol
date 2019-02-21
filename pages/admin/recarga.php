@@ -13,6 +13,7 @@
 <body style="background: #F2F4F4">
 	<?php include('navbar.php'); ?>
 	<div class="container">
+		<!--****************************************************************************************
 		<div class="row mt-5">
 			<div class="col-sm-6 text-center text-lg-left d-md-flex">
 				<h4 class="my-auto font-primary">Nueva <strong>Recarga</strong></h4>
@@ -21,178 +22,266 @@
 				<p class="my-auto font-primary"><a href="repartidor.php">Repartidores</a> <i class="fas fa-chevron-right fa-xs"></i> Recarga <i class="fas fa-chevron-right fa-xs"></i> <a href="liquidar.php">Liquidar</a> <i class="fas fa-chevron-right fa-xs"></i> <a href="misliquidaciones.php">Mis Liquidaciones</a></p>
 			</div>
     </div>
-		<div class="row mt-3">
+		****************************************************************************************-->
+		<div class="row mt-5">
 			<div class="col-sm-12">
-				<div class="card border-0">
-					<div class="card-body">
+				<nav>
+					<div class="nav nav-tabs" id="nav-tab" role="tablist">
+						<a class="nav-item nav-link active font-primary" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-file"></i> Registro de <strong>Recarga</strong></a>
+						<a class="nav-item nav-link font-primary" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fas fa-file-alt"></i> Lista de <strong>Recarga</strong></a>
+					</div>
+				</nav>
+				<div class="tab-content" id="nav-tabContent">
+					<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 						<div class="row">
-							<div class="col-sm-4">
-								<img src="../../assets/css/img/recarga.png" alt="" class="img-fluid">
-							</div>
-							<div class="col-sm-8">
-								<form action="" id="frmRec">
-			  						<div class="form-row">
-			  							<div class="form-group col-sm-6">
-											<label for="" class="col-form-label">Repartidor :</label>
-											<select class="form-control" name="empChof" id="empChofe">
-												<option value="">Elije uno</option>
-											      <?php 
-											      	
-											      	date_default_timezone_set('America/Lima');
-											      	$fechnow = date('Y-m-d');
-											      	$reparte = $con->query("SELECT * FROM repartidor WHERE fecha_re='$fechnow' ");
-											        while ($row = $reparte->fetch_assoc()) {
-											          echo "<option value='".$row['id_repartidor']."' ";
-											          echo ">";
-											          echo $obj->nombreEmpleado($row['id_emp']);
-											          
-											          echo "</option>";
-											        }
-											      ?>
-											</select>
+							<div class="col-sm-12">
+								<div class="card border-top-0">
+									<div class="card-body">
+										<div class="row">
+											<div class="col-md-10">
+												<form action="" id="formRecargas">
+													<div class="row">
+														<!--**********************************************************-->
+														
+														<div class="col-md-4" style="border-right: 1px solid #f2f4f4; border-left: 1px solid #f2f4f4">
+															<div class="form-row">
+																<div class="col-md-12 form-group">
+																	<label for="recargachofer" class="col-form-label col-form-label-sm">Chofer</label>
+																	<select name="recargachofer" id="recargachofer" class="form-control form-control-sm">
+																		<option value="">Elije uno..</option>
+																		<?php 
+																			date_default_timezone_set('America/Lima');
+																			$repfech = date('Y-m-d');
+																			$prod = $con->query("SELECT * FROM repartidor WHERE fecha_re='$repfech' GROUP BY id_repartidor ");
+																			while ($row = $prod->fetch_assoc()) {
+																				echo "<option value='".$row['id_repartidor']."' ";
+																				echo ">";
+																				echo $obj->nombreEmpleado($row['id_emp']);
+																				
+																				echo "</option>";
+																			}
+																		?>
+																	</select>
+																</div>
+															</div>
+															<div class="form-row">
+																<div class="form-group col-sm-12">
+																	<label for="recargaopcion" class="col-form-label col-form-label-sm">Tipo</label>
+																	<select name="recargaopcion" id="recargaopcion" class="form-control form-control-sm">
+																		<option value="S">Salida</option>
+																		<option value="E">Entrada</option>
+																	</select>
+																</div>
+																
+															</div>
+														</div>
+														<!--**********************************************************-->
+														<div class="col-md-8">
+															<div class="form-row">
+																<div class="col-sm-6 form-group">
+																	<label for="recargaprod" class="col-form-label col-form-label-sm">Producto</label>
+																	<select name="recargaprod" id="recargaprod" class="form-control form-control-sm">
+																		<option value="">Elije uno..</option>
+																		<?php $prod = $con->query("SELECT * FROM producto");
+																			while ($row = $prod->fetch_assoc()) {
+																				echo "<option value='".$row['id_producto']."' ";
+																				echo ">";
+																				echo $row['nom_producto'];
+																				echo "</option>";
+																			}
+																		?>
+																	</select>
+																</div>
+																<div class="col-sm-3 form-group">
+																	<label for="recargatipo" class="col-form-label col-form-label-sm">Estado</label>
+																	<select name="recargatipo" id="recargatipo" class="form-control form-control-sm">
+																		<option value="N">Normal</option>
+																		<option value="P">Prestado</option>
+																		<option value="V">Vendido</option>
+																		<option value="R">Robado</option>
+																	</select>
+																</div>
+																<div class="col-sm-3 form-group">
+																	<label for="recargacant" class="col-form-label col-form-label-sm">Cantidad</label>
+																	<input type="number" name="recargacant" id="recargacant" class="form-control form-control-sm">
+																</div>
+															</div>
+															<div class="form row">
+																<div class="col-sm-4 form-group">
+																	<label for="recargaprec" class="col-form-label col-form-label-sm">Precio</label>
+																	<input type="number" step="any" name="recargaprec" id="recargaprec" class="form-control form-control-sm" readonly>
+																</div>
+																<div class="col-sm-4 form-group">
+																	<label for="recargaenv" class="col-form-label col-form-label-sm">P. Envase</label>
+																	<input type="number" step="any" name="recargaenv" id="recargaenv" class="form-control form-control-sm" readonly>
+																</div>
+																<div class="col-sm-4 form-group">
+																	<label for="recargapfin" class="col-form-label col-form-label-sm">Sub Total</label>
+																	<input type="number" step="any" name="recargapfin" id="recargapfin" class="form-control form-control-sm" readonly>
+																</div>
+																
+															</div>
+														</div>
+														<!--**********************************************************-->
+													</div>
+												</form>
+											</div>
+											<div class="col-md-2 d-flex">
+												<div class="m-auto">
+													<div class="row">
+														<div class="col-md-12">
+															<button class="btn btn-success" id="btnAddRecargar"><i class="fas fa-plus"></i></button>
+														</div>
+													</div>
+													<div class="row mt-3">
+														<div class="col-md-12">
+															<button class="btn btn-danger" id="btnClearRecarga"><i class="fas fa-trash"></i></button>
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
-										<div class="form-group col-sm-3">
-											<label for="" class="col-form-label">Cantidad</label>
-											<input type="number" readonly class="form-control" id="cantChof" name="cantChof">
-										</div>
-										<div class="form-group col-sm-3">
-											<label for="" class="col-form-label">Placa</label>
-											<input type="text" class="form-control" id="placaChof" name="placaChof" readonly>
-										</div>
-			  						</div>
-			  						<hr>
-			  						<div class="form-row">
-			  							<div class="col-sm-6">
-			  								<div class="form-group row">
-						                  <label for="llenosRec" class="col-sm-6 col-form-label">Llega Llenos :</label>
-						                  <div class="col-sm-6">
-						                    <input class="form-control" type="number" id="llenosRec" name="llenosRec">
-						                  </div>
-						               </div>
-						               <div class="form-group row">
-						               	<label for="vaciosRec" class="col-sm-6 col-form-label">Llega Vacios :</label>
-						                  <div class="col-sm-6">
-						                    <input class="form-control" type="number" id="vaciosRec" name="vaciosRec">
-						                  </div>
-						               </div>
-			  							</div>
-			  							<div class="col-sm-6">
-			  								<div class="form-group row">
-						                  <label for="galonPres" class="pl-lg-5 col-sm-6 col-form-label">N° Prestado :</label>
-						                  <div class="col-sm-6">
-						                    <input class="form-control" type="number" id="galonPres" name="galonPres">
-						                  </div>
-						               </div>
-						               <div class="form-group row">
-						                  <label for="galonVend" class="pl-lg-5 col-sm-6 col-form-label">N° Vendido :</label>
-						                  <div class="col-sm-6">
-						                    <input class="form-control" type="number" id="galonVend" name="galonVend">
-						                  </div>
-						               </div>
-			  							</div>
-			  						</div> 
-			  					</form>
-			  					<hr>
-			  					<div class="row mt-3">
-			  						<div class="col-sm-12 text-right">
-			  							<button class="btn btn-green-secondary" id="registroRec">Recargar <i class="fas fa-truck fa-sm ml-2"></i></button>
-			  						</div>
-			  					</div>
+										
+									</div>
+								</div>
 							</div>
 						</div>
+						<!--****************************************************************************************-->
+						<div class="row mt-3">
+							<div class="col-md-12">
+								<div id="TablaRecargaTempLoad"></div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+						<div class="row mt-4">
+              <div class="col-sm-12">
+                <div id="tableRecargas" class="table-responsive"></div>
+              </div>
+            </div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<footer class="footer mt-5">
-          <div class="d-sm-flex justify-content-sm-between justify-content-center">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
-              Copyright <i class="far fa-copyright"></i>2018 
-              <a href="#" target="_blank">SURGAS</a>. Todos los derechos reservados
-            </span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-              Desarrollado <i class="fas fa-code text-danger"></i> por Franz Cruz <i class="fas fa-laptop text-danger"></i>
-            </span>
-          </div>
-        </footer>
+		<!--****************************************************************************************-->
+		
+
+		<!--****************************************************************************************>-->
+		
 	</div>
 	<?php include('scripts.php'); ?>
 	<script type="text/javascript">
       $(document).ready(function() {
-        $('#tabRecarga').load('../componentes/tablerecarga.php');
+				$('#TablaRecargaTempLoad').load('../componentes/tableRecargaTemp.php');
+        $('#tableRecargas').load('../componentes/tablerecargas.php');
       });
-    </script>
-    <script>
+  </script>
+	<!--****************************************************************************************>-->
+  <script>
 	  jQuery(document).ready(function() {
-	    $('#empChofe').change(function() {
+	    
+			$('#recargaprod').change(function() {
 	      $.ajax({
-	        url: '../../procesos/recarga/llenarepartidor.php',
+	        url: '../../procesos/ventas/llenarformproducto.php',
 	        type: 'POST',
-	        data: "idrep=" + $('#empChofe').val(),
+	        data: "idproducto=" + $('#recargaprod').val(),
 	        success:function(r){
 	          datos = jQuery.parseJSON(r);
-	          $('#cantChof').val(datos['cantiphp']);
-	          $('#placaChof').val(datos['placaphp']);
+	          $('#recargaprec').val(datos['precio_domiciliophp']);
+						$('#recargaenv').val(datos['precio_fierrophp']);
+						
+						var estado = $('#recargatipo').val();
+						var precio = $('#recargaprec').val();
+						var fierro = $('#recargaenv').val();
+
+						if (estado == "N") {
+							$('#recargapfin').val(precio);
+						}else{
+							var total = parseFloat(precio)+ parseFloat(fierro);
+							$('#recargapfin').val(total);
+						}
 	        }
 	      })
-	    });
+			});
+			$('#recargatipo').change(function(){
+				var estado = $('#recargatipo').val();
+				var precio = $('#recargaprec').val();
+				var fierro = $('#recargaenv').val();
+
+				if (estado == "N") {
+					$('#recargapfin').val(precio);
+				}else{
+					var total = parseFloat(precio)+ parseFloat(fierro);
+					$('#recargapfin').val(total);
+				}
+			});
 	  });
 	</script>
+	<!--****************************************************************************************>-->
 	<script>
-
-		function crearRecarga(){
+	$(document).ready(function(){
+		$('#btnAddRecargar').click(function(){
+			vacios = validarFrmVacio('formRecargas');
+			if(vacios > 0){
+				alertify.error("Debe llenar todos los campos!");
+				return false;
+			}
+			datos = $('#formRecargas').serialize();
 			$.ajax({
-    			url: '../../procesos/recarga/crearecarga.php',
-    			success:function(r){
-    				if (r > 0) {
-    					$('#TablaRecargaTempLoad').load("../componentes/tableRecargaTemp.php");
-    					$('#frmRecBal')[0].reset();
-    					$('#frmRec')[0].reset();
-
-    					$('#empChofe').removeAttr('disabled');
-    					$('#llenosRec').removeAttr('disabled');
-    					$('#vaciosRec').removeAttr('disabled');
-    					$('#galonPres').removeAttr('disabled');
-    					$('#galonVend').removeAttr('disabled');
-
-    					$('#prodRec').attr('disabled', 'disabled');
-    					$('#cantReca').attr('disabled', 'disabled');
-    					$('#recargaBal').attr('disabled', 'disabled');
-    					$('#cleanRec').attr('disabled', 'disabled');
-
-    					alertify.alert("Recarga con Exito, consulte sus Recargas");
-    				}else if(r == 0){
-    					alertify.alert("No hay lista de Galones");
-    				}else{
-    					alertify.error("No se Pudo Recargar");
-    				}
-    			}
-    		})
-		}
-
-		function eliminarRecarga(idsal){
-			alertify.confirm("¿Desea BORRAR la llegada.",
-          	function(){
-             	$.ajax({
-              	url: '../../procesos/recarga/deleterec.php',
-              	type: 'POST',
-              	data: "idsal=" + idsal,
-              	success:function(r){
-               		if (r==1) {
-                		$('#tabRecarga').load('../componentes/tablerecarga.php');
-                		$('#cargachofer').load('../componentes/tablechofer.php');
-                		alertify.success("Eliminaste con EXITO");
-               		}else{
-                		alertify.error("No se pudo Eliminar");
-               		}
-              	}
-            	})
-          	},
-          	function(){
-            	alertify.warning('Estuviste a punto de Eliminar');
-          	});
-		}
-		
+				url: '../../procesos/recarga/agregarecargatemp.php',
+				type: 'POST',
+				data: datos,
+				success:function(r){
+					if (r==2) {
+						alertify.error('No hay producto');
+					}else if(r==1){
+						alertify.error('Pocos Prodcutos en Stock');
+					}else{
+						$('#TablaRecargaTempLoad').load('../componentes/tableRecargaTemp.php');
+					}
+				}
+			})
+		});
+		$('#btnClearRecarga').click(function(){
+			$.ajax({
+				url: '../../procesos/recarga/limpiarecargatemp.php',
+				success:function(r){
+					$('#TablaRecargaTempLoad').load('../componentes/tableRecargaTemp.php');
+				}
+			})
+		});
+	})
+	</script>
+	<!--****************************************************************************************>-->
+	<script>
+	function quitarRec(index){
+		$.ajax({
+			url: '../../procesos/recarga/quitarecarga.php',
+			type: 'POST',
+			data: "ind=" + index,
+			success:function(r){
+				$('#TablaRecargaTempLoad').load('../componentes/tableRecargaTemp.php');
+				alertify.success("Se quito el producto :)");
+			}
+		})
+	}
+	function creaRecargas(){
+		$.ajax({
+			url: '../../procesos/recarga/crearecarga.php',
+			success:function(r){
+				if (r > 0) {
+					$('#TablaRecargaTempLoad').load('../componentes/tableRecargaTemp.php');
+					$('#tableRecargas').load('../componentes/tablerecargas.php');
+					$('#formRecargas')[0].reset();
+					alertify.alert("Recarga creada con Exito, consulte sus recargas");
+				}else if(r == 0){
+					alertify.alert("No hay lista de productos");
+				}else{
+					alertify.error("No se Pudo crear la Recarga");
+				}
+			}
+		})
+	}
 	</script>
 </body>
 </html>

@@ -4,11 +4,11 @@
 	require '../../config/ventas.php';
 	$obj=new ventas();
 
-	if (count($_SESSION['tablaRecargaTemp'])==0) {
+	if (count($_SESSION['tablaRecargasTemp'])==0) {
 		echo 0;
 	}else{
-		$result = $obj->crearRecarga();
-		unset($_SESSION['tablaRecargaTemp']);
+		$result = $obj->crearRecargas();
+		unset($_SESSION['tablaRecargasTemp']);
 		echo $result;
 	}
 

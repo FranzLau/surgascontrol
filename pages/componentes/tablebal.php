@@ -4,7 +4,7 @@
   $sql = $con->query("SELECT id_producto,nom_producto,desc_producto,stock_llenos,stock_vacios,precio_zonal,precio_domicilio,precio_fierro,tipo_producto FROM producto");
  ?>
 <div class="table-responsive">
-  <table class="table table-hover" id="tablebal">
+  <table class="table table-hover table-sm" id="tablebal">
     <thead class="font-primary">
         <tr>
             <th>NOMBRE</th>

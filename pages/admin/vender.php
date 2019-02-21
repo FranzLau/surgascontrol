@@ -25,7 +25,7 @@
 				<div class="card border-0">
 					<div class="card-body">
 						<div class="row">
-							<div class="col-sm-12">
+							<div class="col-sm-10">
 								<form action="" id="frmVentasProducto">
 									<div class="row">
 										<div class="col-sm-8">
@@ -46,34 +46,34 @@
 											                }
 										            	?>
 													</select>
-								    			</div>
-								    			<div class="form-group col-sm-3">
-								    				<label for="tipoVen" class="col-form-label-sm col-form-label">Venta</label>
-												    <select name="fierroVen" id="fierroVen" class="form-control form-control-sm">
-												      	<option value="G" selected>Normal (GAS)</option>
-												      	<option value="G/E">GAS + Envase</option>
-												      	<option value="E">Envase</option>
-												    </select>
-								    			</div>
-											</div>
-											<div class="form-row">
-												<div class="form-group col-sm-3">
+								    		</div>
+								    		<div class="form-group col-sm-6">
 								    				<label for="producVen" class="col-form-label col-form-label-sm">Producto :</label>
 												    <select class="form-control form-control-sm" id="producVen" name="producVen">
-											      		<option value="">Elije producto</option>
+											      	<option value="">Elije producto</option>
 													  	<?php $prod = $con->query("SELECT * FROM producto");
-											                while ($row = $prod->fetch_assoc()) {
-											                  echo "<option value='".$row['id_producto']."' ";
-											                  echo ">";
-											                  echo $row['nom_producto'];
-											                  echo "</option>";
-											                }
-										            	?>
+																while ($row = $prod->fetch_assoc()) {
+																	echo "<option value='".$row['id_producto']."' ";
+																	echo ">";
+																	echo $row['nom_producto'];
+																	echo "</option>";
+																}
+															?>
+														</select>
+								    			</div>	
+											</div>
+											<div class="form-row">
+												<div class="form-group col-sm-6">
+													<label for="tipoVen" class="col-form-label-sm col-form-label">Venta</label>
+													<select name="fierroVen" id="fierroVen" class="form-control form-control-sm">
+															<option value="G" selected>Normal (GAS)</option>
+															<option value="G/E">GAS + Envase</option>
+															<option value="E">Envase</option>
 													</select>
-								    			</div>
-								    			<div class="form-group col-sm-3">
-								    				<label for="cantVen" class="col-form-label col-form-label-sm">Cantidad</label>
-												    <input step="any" type="number" class="form-control form-control-sm" id="cantVen" name="cantVen">
+												</div>
+								    		<div class="form-group col-sm-3">
+								    			<label for="cantVen" class="col-form-label col-form-label-sm">Cantidad</label>
+												  <input step="any" type="number" class="form-control form-control-sm" id="cantVen" name="cantVen">
 												</div>
 												<div class="form-group col-sm-3">
 													<label for="" class="col-form-label-sm col-form-label">Precio Final</label>
@@ -106,32 +106,27 @@
 									</div>
 								</form>
 							</div>
+                     <div class="col-sm-2 d-flex">
+                        <div class="m-auto">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <button class="btn btn-success" id="btnAgregarVen"><i class="fas fa-plus"></i></button>
+                              </div>
+                           </div>
+                           <div class="row mt-3">
+                              <div class="col-md-12">
+                                 <button class="btn btn-danger" id="btnLimpiarVen"><i class="fas fa-trash"></i></button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
 						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-12">
-								<button class="btn btn-danger" id="btnLimpiarVen"><i class="fas fa-trash"></i> Limpiar Lista</button>
-							  	<button class="btn btn-warning" id="btnAgregarVen"><i class="fas fa-shopping-cart"></i> Agregar</button>
-							</div>
-						</div>
-						
-						
 					</div>
 				</div>
 			</div>
 		</div>
 		<div id="TablaVentasTempLoad"></div>
-		<footer class="footer mt-5">
-          <div class="d-sm-flex justify-content-sm-between justify-content-center">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
-              Copyright <i class="far fa-copyright"></i>2018 
-              <a href="#" target="_blank">SURGAS</a>. Todos los derechos reservados
-            </span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-              Desarrollado <i class="fas fa-code text-danger"></i> por Franz Cruz <i class="fas fa-laptop text-danger"></i>
-            </span>
-          </div>
-        </footer>
+		
 	</div>
 	 <?php include('scripts.php'); ?>
     <script>

@@ -39,17 +39,7 @@
         <div id="tableCarg"></div>
       </div>
     </div>
-    <footer class="footer mt-5">
-      <div class="d-sm-flex justify-content-sm-between justify-content-center">
-        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
-          Copyright <i class="far fa-copyright"></i>2018 
-          <a href="#" target="_blank">SURGAS</a>. Todos los derechos reservados
-        </span>
-        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-          Desarrollado <i class="fas fa-code text-danger"></i> por Franz Cruz <i class="fas fa-laptop text-danger"></i>
-        </span>
-      </div>
-    </footer>
+    
 	</div>
 
 

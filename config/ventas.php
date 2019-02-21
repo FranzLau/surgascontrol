@@ -57,28 +57,26 @@
 			require 'conexion.php';
 			date_default_timezone_set('America/Lima'); 
 			$fechpar = date('Y-m-d');
-			$emple=$_SESSION['loggedIN']['id_emp'];
+			
 			$idpart = self::creaFolioPartida();
 			$datos = $_SESSION['tablaPartidasTemp'];
 			$r=0;
 			for ($i=0; $i < count($datos) ; $i++){
 				$d=explode("||", $datos[$i]);
 				$sql=$con->query("INSERT INTO repartidor (id_repartidor,
-															placa_re,
 															id_producto,
 															fecha_re,
 															cantidad_re,
 															id_emp,
 															tipo_prod)
 								VALUES ('$idpart',
-										'$d[0]',
-										'$d[5]',
+										'$d[4]',
 										'$fechpar',
-										'$d[3]',
-										'$emple',
-										'$d[4]')");
+										'$d[2]',
+										'$d[5]',
+										'$d[3]')");
 				$r = $r + $sql;
-				self::descuentaCantidadPartida($d[5],$d[3],$d[4]);
+				self::descuentaCantidadPartida($d[4],$d[2],$d[3]);
 			}
 			return $r;
 		}
@@ -180,6 +178,17 @@
 			}
 			return $total;
 		}
+
+		public function totalPartida($idrep){
+			require 'conexion.php';
+			$sqlre = $con->query("SELECT cantidad_re FROM repartidor WHERE id_repartidor = '$idrep' ");
+			$total=0;
+			while ($result=$sqlre->fetch_row()){
+				$total=$total+$result[0];
+			}
+			return $total;
+		}
+
 		public function obtenerMonto($idliqi,$idprodu){
 			require 'conexion.php';
 			$sql=$con->query("SELECT cantidad_li,precio_li,tipo_balon,descuento_li,gasto_li FROM liquidar WHERE id_liquidar='$idliqi' ");
@@ -251,6 +260,92 @@
 				self::descuentaCantidad($d[0],$d[3],$d[4]);
 			}
 			return $r;
+		}
+		// -------Aqui empezaremos a crear la funcion para ------------ CREAR RECARGA ---------------
+		public function FolioRecarga(){
+			require 'conexion.php';
+			$sql = $con->query("SELECT id_recarga FROM recarga GROUP BY id_recarga DESC");
+			$result = $sql->fetch_row();
+			$id = $result[0];
+			if ($id=="" or $id==null or $id==0) {
+				return 1;
+			}else{
+				return $id + 1;
+			}
+		}
+		public function crearRecargas(){
+			require 'conexion.php';
+			date_default_timezone_set('America/Lima'); 
+			$fecharec = date('Y-m-d');
+			$idrec = self::FolioRecarga();
+			$datos = $_SESSION['tablaRecargasTemp'];
+			$r=0;
+			for ($i=0; $i < count($datos) ; $i++){
+				$d=explode("||", $datos[$i]);
+				$sql=$con->query("INSERT INTO recarga (id_recarga,
+														id_emp,
+														id_producto,
+														fecha_recarga,
+														tipo_recarga,
+														cantidad_recarga,
+														balon_recarga,
+														precio_recarga) 
+									VALUES ('$idrec',
+											'$d[7]',
+											'$d[8]',
+											'$fecharec',
+											'$d[0]',
+											'$d[5]',
+											'$d[4]',
+											'$d[6]')");
+				$r = $r + $sql;
+				self::descuentaStock($d[8],$d[5],$d[0],$d[4]);
+			}
+			return $r;
+		}
+		public function descuentaStock($idprod,$cantidad,$tipo,$estado){
+			require 'conexion.php';
+			$sql = $con->query("SELECT stock_llenos,stock_vacios FROM producto WHERE id_producto='$idprod' ");
+			$result = $sql->fetch_row();
+			$llenos = $result[0];
+			$vacios = $result[1];
+
+			if ($tipo=="S"){
+				if ($estado=="N") {
+					$newllenos = abs($cantidad - $llenos);
+					$newvacios = abs($cantidad + $vacios);
+
+					$sql = $con->query("UPDATE producto SET stock_llenos='$newllenos',stock_vacios='$newvacios' WHERE id_producto='$idprod' ");
+				}else{
+					$newllenos = abs($cantidad - $llenos);
+					$sql = $con->query("UPDATE producto SET stock_llenos='$newllenos' WHERE id_producto='$idprod' ");
+				}
+			}else {
+				if ($estado=="N") {
+					$newllenos = abs($cantidad + $llenos);
+					$newvacios = abs($cantidad + $vacios);
+
+					$sql = $con->query("UPDATE producto SET stock_llenos='$newllenos',stock_vacios='$newvacios' WHERE id_producto='$idprod' ");
+				}
+			}
+		}
+		public function totalRecarga($idrec){
+			require 'conexion.php';
+			$sqlre = $con->query("SELECT cantidad_recarga FROM recarga WHERE id_recarga = '$idrec' ");
+			$total=0;
+			while ($result=$sqlre->fetch_row()){
+				$total=$total+$result[0];
+			}
+			return $total;
+		}
+		public function montoRecarga($idrec){
+			require 'conexion.php';
+			$sqlre = $con->query("SELECT precio_recarga FROM recarga WHERE id_recarga = '$idrec' ");
+			$total=0;
+			while ($result=$sqlre->fetch_row()){
+				$total=$total+$result[0];
+			}
+			return $total;
 		}
 
 	}
