@@ -13,6 +13,7 @@
               <th>Producto</th>
               <th>Precio</th>
               <th>Estado</th>
+              <th>Balon</th>
               <th>Sub Total</th>
               <th>Quitar</th>
             </tr>
@@ -30,6 +31,7 @@
               <td><?php echo $d[5]; ?></td>
               <td><?php echo $d[2]; ?></td>
               <td><?php echo $d[6]; ?></td>
+              <td><?php echo $d[9]; ?></td>
               <td><?php echo $d[4]; ?></td>
               <td><?php echo $st=$d[3]*$d[5]; ?></td>
               <td>

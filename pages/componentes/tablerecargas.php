@@ -21,11 +21,11 @@ $sqlr = $con->query("SELECT * FROM recarga WHERE fecha_recarga='$recfecha' GROUP
    <tbody class="bg-white">
       <?php while($verec = $sqlr->fetch_row()){ ?>
       <tr>
-         <td><?php echo $verec[3] ?></td>
-         <td><?php echo $obj->nombreEmpleado($verec[1]) ?></td>
          <td><?php echo $verec[4] ?></td>
+         <td><?php echo $obj->nombreEmpleado($verec[2]) ?></td>
+         <td><?php echo $verec[5] ?></td>
          <td><?php echo $obj->totalRecarga($verec[0]) ?></td>
-         <td><?php echo $obj->montoRecarga($verec[0]) ?></td>
+         <td>S/. <?php echo $obj->montoRecarga($verec[0]) ?></td>
          <td>
             <button class="btn btn-danger">PDF</button>
          </td>

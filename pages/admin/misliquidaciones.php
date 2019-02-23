@@ -20,11 +20,7 @@
 			</div>
 		</div>
 		<hr>
-		<div class="row mt-5">
-			<div class="col-sm-12">
-				<div id="tableLiquido" class="table-responsive"></div>
-			</div>
-		</div>
+		
 		<footer class="footer mt-5">
           <div class="d-sm-flex justify-content-sm-between justify-content-center">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
@@ -40,7 +36,7 @@
 	<?php include('scripts.php'); ?>
 	<script>
 		$(document).ready(function() {
-			$('#tableLiquido').load("../componentes/tableliquidos.php");
+			
 		});
 	</script>
 </body>

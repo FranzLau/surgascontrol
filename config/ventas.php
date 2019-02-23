@@ -283,23 +283,27 @@
 			for ($i=0; $i < count($datos) ; $i++){
 				$d=explode("||", $datos[$i]);
 				$sql=$con->query("INSERT INTO recarga (id_recarga,
+														id_repartidor,
 														id_emp,
 														id_producto,
 														fecha_recarga,
 														tipo_recarga,
+														estado_recarga,
 														cantidad_recarga,
 														balon_recarga,
 														precio_recarga) 
 									VALUES ('$idrec',
+											'$d[10]',
 											'$d[7]',
 											'$d[8]',
 											'$fecharec',
 											'$d[0]',
+											'$d[9]',
 											'$d[5]',
 											'$d[4]',
-											'$d[6]')");
+											'$d[3]')");
 				$r = $r + $sql;
-				self::descuentaStock($d[8],$d[5],$d[0],$d[4]);
+				self::descuentaStock($d[8],$d[5],$d[0],$d[9]);
 			}
 			return $r;
 		}
@@ -311,21 +315,25 @@
 			$vacios = $result[1];
 
 			if ($tipo=="S"){
-				if ($estado=="N") {
+				if ($estado=="G") {
 					$newllenos = abs($cantidad - $llenos);
 					$newvacios = abs($cantidad + $vacios);
 
 					$sql = $con->query("UPDATE producto SET stock_llenos='$newllenos',stock_vacios='$newvacios' WHERE id_producto='$idprod' ");
-				}else{
+				}elseif($estado=="G/E"){
 					$newllenos = abs($cantidad - $llenos);
 					$sql = $con->query("UPDATE producto SET stock_llenos='$newllenos' WHERE id_producto='$idprod' ");
+				}else{
+					$newvacios = abs($cantidad - $vacios);
+					$sql = $con->query("UPDATE producto SET stock_vacios='$newvacios' WHERE id_producto='$idprod' ");
 				}
 			}else {
-				if ($estado=="N") {
+				if ($estado=="G/E") {
 					$newllenos = abs($cantidad + $llenos);
+					$sql = $con->query("UPDATE producto SET stock_llenos='$newllenos' WHERE id_producto='$idprod' ");
+				}elseif($estado=="E"){
 					$newvacios = abs($cantidad + $vacios);
-
-					$sql = $con->query("UPDATE producto SET stock_llenos='$newllenos',stock_vacios='$newvacios' WHERE id_producto='$idprod' ");
+					$sql = $con->query("UPDATE producto SET stock_vacios='$newvacios' WHERE id_producto='$idprod' ");
 				}
 			}
 		}
@@ -340,10 +348,10 @@
 		}
 		public function montoRecarga($idrec){
 			require 'conexion.php';
-			$sqlre = $con->query("SELECT precio_recarga FROM recarga WHERE id_recarga = '$idrec' ");
+			$sqlre = $con->query("SELECT cantidad_recarga,precio_recarga FROM recarga WHERE id_recarga = '$idrec' ");
 			$total=0;
 			while ($result=$sqlre->fetch_row()){
-				$total=$total+$result[0];
+				$total=$total+($result[0]*$result[1]);
 			}
 			return $total;
 		}

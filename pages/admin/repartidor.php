@@ -12,20 +12,19 @@
 	<?php include('navbar.php'); ?>
 	
 	<div class="container">
-		<!--<div class="row mt-5">
-			<div class="col-sm-6">
-				<h4 class="font-primary">Registro de <strong>Partida</strong></h4>
+		<div class="row mt-4">
+			<div class="col-sm-12 text-center text-lg-left d-md-flex">
+				<h4 class="font-primary my-auto">Registro de <strong>Partidas</strong></h4>
 			</div>
-			<div class="col-sm-6 text-right">
-				<p class="my-auto font-primary">Registro de Partida<i class="fas fa-chevron-right fa-xs ml-2 mr-2"></i><a href="partidas.php">Mis Partidas</a></p>
-			</div>
-		</div>-->
-    <div class="row mt-5">
+		</div>
+    <hr>
+    <!--************************************************************************-->
+    <div class="row mt-3">
       <div class="col-sm-12">
         <nav>
           <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active font-primary" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-file"></i> Registro de <strong>Partida</strong></a>
-            <a class="nav-item nav-link font-primary" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fas fa-file-alt"></i> Lista de <strong>Partidas</strong></a>
+            <a class="nav-item nav-link active font-primary" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-file"></i> Nueva Partida</a>
+            <a class="nav-item nav-link font-primary" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fas fa-file-alt"></i> Mis partidas</a>
           </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
@@ -61,22 +60,11 @@
                                 <div class="form-group col-sm-12">
                                   <label for="tipobalon" class="col-form-label col-form-label-sm">Tipo Balon :</label>
                                   <select name="tipobal" id="tipobalon" class="form-control form-control-sm">
-                                    <option value="cg">Con Gas</option>
-                                    <option value="sg">Sin Gas</option>
+                                    <option value="cg">Gas + Envase</option>
+                                    <option value="sg">Solo Envase</option>
                                   </select> 
                                 </div>
-                                <!--<div class="form-group col-md-6">
-                                  <?php
-                                    date_default_timezone_set('America/Lima');
-                                    $fech = date('Y-m-d');
-                                  ?>
-                                  <label for="colFormLabelSm" class="col-form-label col-form-label-sm">Fecha :</label>
-                                  <input type="text" readonly class="form-control text-center form-control-sm" id="colFormLabelSm" value=" <?php echo $fech ?> ">
-                                </div>
-                                <div class="form-group col-md-6">
-                                  <label for="parplaca" class="col-form-label col-form-label-sm">Placa :</label>
-                                  <input type="text" class="form-control form-control-sm" id="parplaca" name="parplaca">
-                                </div>-->
+                                
                               </div>
                             </div>
                             <div class="col-md-6">
