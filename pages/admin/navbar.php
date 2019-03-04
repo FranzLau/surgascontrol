@@ -157,28 +157,30 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto ml-auto">
           <li class="nav-item dropdown mr-2">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Almacén</a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-warehouse"></i> Almacén</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="balones.php"><i class="fas fa-fire"></i> Productos</a>
-              <a class="dropdown-item" href="compra.php"><i class="fas fa-fire"></i> Mis Compras</a>
+              <a class="dropdown-item" href="balones.php"><i class="fas fa-fire"></i> PRODUCTOS</a>
+              <a class="dropdown-item" href="compra.php"><i class="fas fa-fire"></i> COMPRAS</a>
+              <a class="dropdown-item" href="vender.php"><i class="fas fa-fire"></i> VENTAS</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="vender.php"><i class="fas fa-fire"></i> Vender ahora</a>
-              <a class="dropdown-item" href="ventas.php"><i class="fas fa-fire"></i> Mis Ventas</a>
+              <a class="dropdown-item" href="retiro.php"><i class="fas fa-fire"></i> GASTOS</a>
+              <!--<a class="dropdown-item" href="tipogasto.php"><i class="fas fa-fire"></i> Tipo Gasto</a>
+              <!--<a class="dropdown-item" href="ventas.php"><i class="fas fa-fire"></i> Mis Ventas</a>-->
             </div>
           </li>
           <li class="nav-item dropdown mr-2">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recargas</a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-truck"></i> Repartidor</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="repartidor.php"><i class="fas fa-fire"></i> Registro de Partidas</a>
+              <a class="dropdown-item" href="repartidor.php"><i class="fas fa-fire"></i> Partidas</a>
               <!--<a class="dropdown-item" href="partidas.php"><i class="fas fa-fire"></i> Lista de Partidas</a>-->
-              <a class="dropdown-item" href="recarga.php"><i class="fas fa-fire"></i> Recargar Partida</a>
+              <a class="dropdown-item" href="recarga.php"><i class="fas fa-fire"></i> Recargar</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="liquidar.php"><i class="fas fa-fire"></i> Liquidar Chofer</a>
-              <a class="dropdown-item" href="misliquidaciones.php"><i class="fas fa-fire"></i> Liquidaciones</a>
+              <a class="dropdown-item" href="liquidar.php"><i class="fas fa-fire"></i> Liquidar</a>
+              <!--<a class="dropdown-item" href="misliquidaciones.php"><i class="fas fa-fire"></i> Liquidaciones</a>-->
               
             </div>
           </li>
-          <li class="nav-item dropdown">
+          <!--<li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Caja</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="cajero.php"><i class="fas fa-fire"></i> Cerrar Caja</a>
@@ -186,10 +188,10 @@
               <a class="dropdown-item" href="retiro.php"><i class="fas fa-fire"></i> Mis Gastos</a>
               <a class="dropdown-item" href="tipogasto.php"><i class="fas fa-fire"></i> Tipo Gasto</a>
             </div>
-          </li>
+          </li>-->
           <?php if ($_SESSION['loggedIN']['acceso_emp'] == "Administrador"): ?>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mantenimiento
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-cog"></i> Mantenimiento
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="trabajador.php"><i class="fas fa-fire"></i> Empleados</a>

@@ -144,7 +144,8 @@
 							'emempphp'=>$ver[8],
 							'accempphp'=>$ver[9],
 							'pasempphp'=>$ver[10],
-							'idcgephp'=>$ver[11]);
+							'idcgephp'=>$ver[11],
+							'estadoemp'=>$ver[12]);
 			return $datos;
 		}
 		public function deleteEmple($idemp){
@@ -162,7 +163,8 @@
 							'dcgtophp'=>$ver[2],
 							'fgtophp'=>$ver[3],
 							'idegtophp'=>$ver[4],
-							'idtgtophp'=>$ver[5]);
+							'idtgtophp'=>$ver[5],
+							'empgasta'=>$ver[6]);
 			return $datos;
 		}
 		public function DeleteGastos($idgto){

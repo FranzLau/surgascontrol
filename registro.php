@@ -90,9 +90,20 @@
 				               		<input type="text" class="form-control form-control-sm" name="accemp" id="inputAccEmp" value="Administrador">
 				               	</div>
 				               	<div class="form-group col-sm-4">
-				              		<label for="inputemail" class="col-form-label col-form-label-sm">Cargo</label>
-				              		<input type="text" class="form-control form-control-sm" name="cargoemp" id="inputAcceso" value="1">
-				              		
+				              		<label for="inputAcceso" class="col-form-label col-form-label-sm">Cargo</label>
+				              		<!--<input type="text" class="form-control form-control-sm" name="cargoemp" id="inputAcceso" value="1">-->
+				              		<select name="cargoemp" id="inputAcceso">
+									  	<option value="0">Elije una...</option>
+										<option value="Gerente">Gerente</option>
+										<option value="Chofer">Chofer</option>
+										<option value="Administrador">Administrador</option>
+										<option value="Contador">Contador</option>
+										<option value="Soporte Técnico">Soporte Técnico</option>
+										<option value="Recepcionista de Llamadas">Recepcionista de Llamadas</option>
+										<option value="Ventas">Ventas</option>
+										<option value="Limpieza">Limpieza</option>
+										<option value="Otro">Otro</option>
+									</select>
 				              	</div>
 				              </div>  
 				            </form>

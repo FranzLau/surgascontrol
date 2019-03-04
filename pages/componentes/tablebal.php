@@ -23,9 +23,9 @@
               <td><?php echo $mostrarprov[1] ?></td>
               <td><?php echo $mostrarprov[3] ?></td>
               <td><?php echo $mostrarprov[4] ?></td>
-              <td><?php echo $mostrarprov[5] ?></td>
-              <td><?php echo $mostrarprov[6] ?></td>
-              <td><?php echo $mostrarprov[7] ?></td>
+              <td>s/ <?php echo $mostrarprov[5] ?></td>
+              <td>s/ <?php echo $mostrarprov[6] ?></td>
+              <td>s/ <?php echo $mostrarprov[7] ?></td>
               <td><?php echo $mostrarprov[8] ?></td> 
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
@@ -41,3 +41,23 @@
       </tbody>
   </table>
 </div>
+<script>
+  $(document).ready(function() {
+    $('#tablebal').DataTable({
+      "language": {
+        "lengthMenu": "Mostrar _MENU_ registros por página",
+        "zeroRecords": "Nada encontrado, lo siento!",
+        "info": "Mostrando página _PAGE_ de _PAGES_",
+        "infoEmpty": "No hay registros disponibles",
+        "infoFiltered": "(filtered from _MAX_ total records)",
+        "search": "Buscar",
+        "paginate": {
+          "first":      "Primero",
+          "previous":   "Anterior",
+          "next":       "Siguiente",
+          "last":       "Último"
+        }
+      }
+    });
+  });
+</script>

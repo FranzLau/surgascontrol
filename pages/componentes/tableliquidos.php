@@ -5,7 +5,7 @@
 	$sql=$con->query("SELECT id_liquidar,fecha_li,tipo_balon,id_repartidor,id_producto FROM liquidar GROUP BY id_liquidar");
  ?>
 
- <table class="table" id="tabliquis">
+ <table class="table table-sm table-hover" id="tabliquis">
   <thead class="font-primary">
     <tr>
       <th>FOLIO</th>

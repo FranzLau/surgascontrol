@@ -38,7 +38,8 @@
 															tipo_venta,
 															id_emp,
 															id_cliente,
-															id_producto) 
+															id_producto,
+															descuento_ven) 
 									VALUES ('$idvent',
 											'$d[3]',
 											'$d[4]',
@@ -46,7 +47,8 @@
 											'$d[6]',
 											'$emple',
 											'$d[5]',
-											'$d[0]') ");
+											'$d[0]',
+											'$d[7]') ");
 				$r = $r + $sql;
 				self::descuentaCantidad($d[0],$d[3],$d[6]);
 			}
@@ -171,10 +173,10 @@
 		}
 		public function obtenerTotal($idventa,$idprodu){
 			require 'conexion.php';
-			$sqlp = $con->query("SELECT cantidad,precio_venta,tipo_venta FROM detalleventa WHERE id_detalleventa = '$idventa' ");
+			$sqlp = $con->query("SELECT cantidad,precio_venta,descuento_ven FROM detalleventa WHERE id_detalleventa = '$idventa' ");
 			$total = 0;
 			while ($result = $sqlp->fetch_row()) {
-				$total=$total+($result[0]*$result[1]);
+				$total=$total+(($result[1]-$result[2])*$result[0]);
 			}
 			return $total;
 		}

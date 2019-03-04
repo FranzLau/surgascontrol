@@ -1,6 +1,6 @@
 <?php
     require '../../config/conexion.php';
-    $sql = $con->query("SELECT id_emp,nom_emp,ape_emp,sexo_emp,fechnac_emp,numdoc_emp,dir_emp,telf_emp,email_emp,acceso_emp,password_emp,nom_cargo FROM empleado INNER JOIN cargo ON cargo.id_cargo=empleado.id_cargo");
+    $sql = $con->query("SELECT * FROM empleado ");
 ?>
  <div class="table-responsive">
    <table class="table table-hover table-sm" id="tablemp">
@@ -10,6 +10,7 @@
              <th>DNI</th>
              <th>TELÉFONO</th>
              <th>CARGO</th>
+             <th>ESTADO</th>
              <th>ACCESO</th>
              <th>ACCIONES</th>
          </tr>
@@ -23,6 +24,19 @@
             <td><?php echo $mostrar[5] ?></td>
             <td><?php echo $mostrar[7] ?></td>
             <td><?php echo $mostrar[11] ?></td>
+            <td>
+              <?php 
+              if ($mostrar[12]=="Activo") {
+              ?>
+                <h5><span class="badge badge-success"><?php echo $mostrar[12] ?></span></h5>
+              <?php
+              }else {
+              ?>
+              <h5><span class="badge badge-danger"><?php echo $mostrar[12] ?></span></h5>
+              <?php
+              } 
+              ?>
+            </td>
             <td><?php echo $mostrar[9] ?></td>
             <td>
                <div class="btn-group" role="group" aria-label="Basic example">

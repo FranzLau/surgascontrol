@@ -1,13 +1,15 @@
 <?php 
 	session_start();
 	require '../../config/conexion.php';
-	$tipvenfrm=$_POST['fierroVen'];
-	$clivenfrm=$_POST['cliVen'];
-	$provenfrm=$_POST['producVen'];
-	$canvenfrm=$_POST['cantVen'];
-	$precivfrm=$_POST['preVenta'];
-	$sllvenfrm=$_POST['stockllVen'];
-	$svavenfrm=$_POST['stockvacVen'];
+	
+	$clivenfrm=$_POST['cliVen'];//cliente 
+	$provenfrm=$_POST['producVen'];//producto
+	$canvenfrm=$_POST['cantVen'];//cantidad
+	$desvenfrm=$_POST['descuVen'];//descuento
+	$tipvenfrm=$_POST['fierroVen'];//tipo de venta
+	$precivfrm=$_POST['preVenta'];//precio final monto
+	$sllvenfrm=$_POST['stockllVen'];// llenos
+	$svavenfrm=$_POST['stockvacVen'];//vacios
 
 	$sql=$con->query("SELECT nom_cliente,ape_cliente FROM cliente WHERE id_cliente= '$clivenfrm' ");
 	$c = $sql->fetch_row();
@@ -23,7 +25,8 @@
 				$canvenfrm."||".
 				$precivfrm."||".
 				$clivenfrm."||".
-				$tipvenfrm;
+				$tipvenfrm."||".
+				$desvenfrm;
 
 	if ($tipvenfrm=="G" || $tipvenfrm=="G/E") {
 		if ($sllvenfrm == 0) {

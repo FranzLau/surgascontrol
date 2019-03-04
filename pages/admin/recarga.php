@@ -13,9 +13,9 @@
 <body style="background: #F2F4F4">
 	<?php include('navbar.php'); ?>
 	<div class="container">
-		<div class="row mt-4">
+		<div class="row mt-5">
 			<div class="col-sm-12 text-center text-lg-left d-md-flex">
-				<h4 class="font-primary my-auto">Registro de <strong>Recargas</strong></h4>
+				<h4 class="font-primary my-auto">REGISTRO DE <strong>RECARGAS</strong></h4>
 			</div>
 		</div>
 		<hr>
@@ -162,9 +162,13 @@
 						</div>
 					</div>
 					<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-						<div class="row mt-4">
+						<div class="row">
               <div class="col-sm-12">
-                <div id="tableRecargas" class="table-responsive"></div>
+                <div class="card border-top-0">
+									<div class="card-body">
+										<div id="tableRecargas" class="table-responsive"></div>
+									</div>
+								</div>
               </div>
             </div>
 					</div>

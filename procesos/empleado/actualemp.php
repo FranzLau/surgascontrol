@@ -12,6 +12,7 @@
 	$acempfrm = $_POST['accemP'];
 	$psempfrm = $_POST['passemP'];
 	$idcgefrm = $_POST['cargoemP'];
+	$estademp = $_POST['selestadoE'];
 
 	$upd = $con->query("UPDATE empleado SET nom_emp='$nmempfrm',
 											ape_emp='$apempfrm',
@@ -23,7 +24,8 @@
 											email_emp='$elempfrm',
 											acceso_emp='$acempfrm',
 											password_emp='$psempfrm',
-											id_cargo='$idcgefrm'
+											cargo_emp='$idcgefrm',
+											estado_emp='$estademp'
 										WHERE id_emp= '$idempfrm' ");
 	if ($upd) {
 			echo json_encode(array('error' => false));

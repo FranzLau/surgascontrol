@@ -5,7 +5,7 @@
 	$obj = new ventas();
 
 	$idventa = $_GET['idventa'];
-	$sql = $con->query("SELECT fecha_venta,precio_venta,id_cliente,cantidad,id_producto,tipo_venta FROM detalleventa WHERE id_detalleventa= '$idventa' ");
+	$sql = $con->query("SELECT fecha_venta, precio_venta, id_cliente, cantidad, id_producto, tipo_venta, descuento_ven FROM detalleventa WHERE id_detalleventa= '$idventa' ");
 	$result = $sql->fetch_row();
  ?>
  <!DOCTYPE html>
@@ -58,27 +58,29 @@
  				<table class="table">
 				  <thead style="background: #5659A6;color: #fff;">
 				    <tr>
+							<th>Cantidad</th>
 				      <th>Balon</th>
 				      <th>Precio</th>
-				      <th>Cantidad</th>
+				      <th>Desc.</th>
 				      <th>Tipo</th>
 				    </tr>
 				  </thead>
 				  <tbody>
 				  	<?php 
-				  		$sqlv = $con->query("SELECT fecha_venta,precio_venta,id_cliente,cantidad,id_producto,tipo_venta FROM detalleventa WHERE id_detalleventa= '$idventa' ");
+				  		$sqlv = $con->query("SELECT fecha_venta,precio_venta,id_cliente,cantidad,id_producto,tipo_venta,descuento_ven FROM detalleventa WHERE id_detalleventa= '$idventa' ");
 
 				  		$total=0;
 				  		while($verv=$sqlv->fetch_row()):
 				  	 ?>
 				    <tr>
+							<td><?php echo $verv[3]; ?></td>
 				      <td><?php echo $obj->nombreProducto($verv[4]) ?></td>
 				      <td><?php echo $verv[1]; ?></td>
-				      <td><?php echo $verv[3]; ?></td>
+				      <td><?php echo $verv[6]; ?></td>
 				      <td><?php echo $verv[5]; ?></td>
 				    </tr>
 					<?php
-						$total=$total+($verv[3]*$verv[1]); 
+						$total=$total+(($verv[1]-$verv[6])*$verv[3]); 
 						endwhile; 
 					?>
 				  </tbody>

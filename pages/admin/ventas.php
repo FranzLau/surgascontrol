@@ -20,17 +20,13 @@
 			</div>
 		</div>
 		<hr>
-		<div class="row mt-5">
-			<div class="col-sm-12">
-				<div id="tableVentas" class="table-responsive"></div>
-			</div>
-		</div>
+		
 		
 	</div>
 	<?php include('scripts.php'); ?>
 	<script>
 		$(document).ready(function() {
-			$('#tableVentas').load("../componentes/tablevendo.php");
+			
 		});
 	</script>
 </body>

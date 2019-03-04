@@ -28,7 +28,16 @@ $nproducto = $p[0];
 //hacer que los llenos al entrar no cobre
 if ($recopt=="E") {
     if ($recesta=="G/E") {
-        $recpfin=0;
+        if ($rectipo=="N") {
+            $recpfin=0;
+        }elseif ($rectipo=="R") {
+            $recpfin= -$recpfin;
+        }
+        
+    }elseif ($recesta=="E") {
+        if ($rectipo=="P") {
+            $recpfin = -$recpfin;
+        }
     }
 }
 

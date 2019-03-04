@@ -16,14 +16,14 @@
       <div class="container">
         <div class="row mt-5">
           <div class="col-sm-6 text-center text-lg-left d-md-flex">
-            <h4 class="my-auto font-primary">Lista de <strong>Trabajadores</strong></h4>
+            <h4 class="my-auto font-primary">LISTA DE <strong>EMPLEADOS</strong></h4>
           </div>
           <div class="col-sm-6 text-center text-lg-right">
             <button type="button" class="btn btn-green-secondary" data-toggle="modal" data-target="#empModalCenter"><i class="far fa-file fa-sm mr-2"></i> Nuevo Empleado</button>
           </div>
         </div>
         <hr>
-        <div class="row mt-5">
+        <div class="row">
           <div class="col-sm-12">
             <div id="tabEmp"></div>
           </div>
@@ -56,6 +56,7 @@
             $('#inputAccemP').val(datos['accempphp']);
             $('#inputpassP').val(datos['pasempphp']);
             $('#inputcgemP').val(datos['idcgephp']);
+            $('#selestadoE').val(datos['estadoemp']);
           }
         })
         .done(function() {

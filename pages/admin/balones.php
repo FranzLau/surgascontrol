@@ -18,7 +18,7 @@
         <div id="printableArea">
         <div class="row mt-5">
           <div class="col-sm-6 text-center text-lg-left d-md-flex">
-            <h4 class="my-auto font-primary">Lista de<strong> Productos</strong></h4>
+            <h4 class="my-auto font-primary">LISTA DE<strong> PRODUCTOS</strong></h4>
           </div>
           <div class="col-sm-6 text-center text-lg-right">
             
@@ -28,7 +28,7 @@
         <hr>
         <div class="row">
           <div class="col-sm-12">
-            <div id="tableBal" class="table-responsive"></div>
+            <div id="tableBal"></div>
           </div>
         </div>
         
