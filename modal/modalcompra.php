@@ -9,39 +9,18 @@
         </button>
       </div>
       <div class="modal-body px-5 py-3">
-        <form action="" id="frmComprar">
+        <form action="">
           <input type="text" hidden="" value="Emitido" id="estComp" name="estComp">
           <div class="form-group row">
-            <label for="provComp" class="col-sm-4 col-form-label">Proveedor:</label>
+            
             <div class="col-sm-8">
-                <select class="form-control" id="provComp" name="provComp">
-                  <option selected value="">Elije uno</option>
-                <?php $prov = $con->query("SELECT * FROM proveedor");
-                        while ($row = $prov->fetch_assoc()) {
-                          echo "<option value='".$row['id_proveedor']."' ";
-                          echo ">";
-                          echo $row['razon_social'];
-                          echo "</option>";
-                        }
-                    ?>
-            </select>
+                
             </div>
           </div>
           <div class="form-group row">
-            <label for="produComp" class="col-sm-4 col-form-label">Artículo</label>
+            
             <div class="col-sm-8">
-              <select class="form-control " id="produComp" name="produComp">
-                <option value="">Elije uno</option>
-                <?php 
-                  $prod = $con->query("SELECT * FROM producto");
-                  while ($row = $prod->fetch_assoc()) {
-                    echo "<option value='".$row['id_producto']."' ";
-                    echo ">";
-                    echo $row['nom_producto'];
-                    echo "</option>";
-                  }
-                ?>
-              </select>
+              
             </div>
           </div>
           <div class="form-group row">
@@ -51,18 +30,8 @@
             </div>
           </div>
           <div id="subtotal">
-            <div class="form-group row">
-              <label for="stockComp" class="col-sm-4 col-form-label">Cantidad</label>
-              <div class="col-sm-4">
-                    <input type="text" class="form-control" id="stockComp" name="stockComp">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="pcomComp" class="col-sm-4 col-form-label">Precio Unid.</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" id="pcomComp" name="pcomComp" placeholder="s./00.00">
-              </div>
-            </div>
+            
+            
           </div>
           <div class="form-group row">
             <label for="PagarComp" class="col-sm-4 col-form-label">Total:</label>
@@ -73,7 +42,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-purple-secondary" id="generarCompra"><i class="fas fa-shopping-cart fa-xs mr-2"></i> Comprar</button>
+        <button type="button" class="btn btn-purple-secondary" ><i class="fas fa-shopping-cart fa-xs mr-2"></i> Comprar</button>
         <button type="button" class="btn btn-close-secondary" data-dismiss="modal"><i class="fas fa-times fa-xs mr-2"></i> Cerrar</button>
       </div>
     </div>
