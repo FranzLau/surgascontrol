@@ -207,6 +207,12 @@
 			$result = $sql->fetch_row();
 			return $result[0];
 		}
+		public function nombreProveedor($idprove){
+			require 'conexion.php';
+			$sql=$con->query("SELECT razon_social FROM proveedor WHERE id_proveedor= '$idprove' ");
+			$result = $sql->fetch_row();
+			return $result[0];
+		}
 		public function obtenDatosRepartidor($idrep){
 			require 'conexion.php';
 			$sql = $con->query("SELECT cantidad_re,placa_re FROM repartidor WHERE id_repartidor='$idrep' ");
@@ -357,7 +363,81 @@
 			}
 			return $total;
 		}
+		//--------------------------<<<<<<funciones para  COMPRAR>>>>>>>-------------------------
+		public function FolioCompra(){
+			require 'conexion.php';
+			$sql = $con->query("SELECT id_detalleingreso FROM detalleingreso GROUP BY id_detalleingreso DESC");
+			$result = $sql->fetch_row();
+			$id = $result[0];
+			if ($id=="" or $id==null or $id==0) {
+				return 1;
+			}else{
+				return $id + 1;
+			}
+		}
+		public function crearCompras(){
+			require 'conexion.php';
+			date_default_timezone_set('America/Lima'); 
+			$fechacompra = date('Y-m-d');
+			$idemp=$_SESSION['loggedIN']['id_emp'];
+			$idcompra = self::FolioCompra();
+			$datos = $_SESSION['CompraTemporal'];
+			$r=0;
+			for ($i=0; $i < count($datos) ; $i++){
+				$d=explode("||", $datos[$i]);
+				$sql=$con->query("INSERT INTO detalleingreso (id_detalleingreso,
+														precio_ingreso,
+														cantidad_ingreso,
+														descuento_compra,
+														fecha_compra,
+														tipo_compra,
+														id_producto,
+														id_emp,
+														id_proveedor)
+														 
+									VALUES ('$idcompra',
+											'$d[11]',
+											'$d[7]',
+											'$d[8]',
+											'$fechacompra',
+											'$d[2]',
+											'$d[3]',
+											'$idemp',
+											'$d[0]')");
+				$r = $r + $sql;
+				self::descuentaCompra($d[3],$d[7],$d[2]);
+			}
+			return $r;
+		}
+		public function descuentaCompra($idprod,$cantidad,$tipo){
+			require 'conexion.php';
+			$sql = $con->query("SELECT stock_llenos,stock_vacios FROM producto WHERE id_producto='$idprod' ");
+			$result = $sql->fetch_row();
+			$llenos = $result[0];
+			$vacios = $result[1];
 
+			if ($tipo == "G") {
+				$newllenos = abs($cantidad + $llenos);
+				$newvacios = abs($cantidad - $vacios);
+
+				$sql = $con->query("UPDATE producto SET stock_llenos='$newllenos',stock_vacios='$newvacios' WHERE id_producto='$idprod' ");
+			}elseif ($tipo=="G/E") {
+				$newllenos = abs($cantidad + $llenos);
+				$sql = $con->query("UPDATE producto SET stock_llenos='$newllenos' WHERE id_producto='$idprod' ");
+			}else{
+				$newvacios = abs($cantidad + $vacios);
+				$sql = $con->query("UPDATE producto SET stock_vacios='$newvacios' WHERE id_producto='$idprod' ");
+			}
+		}
+		public function TotalCompra($idcompra){
+			require 'conexion.php';
+			$sqlp = $con->query("SELECT cantidad_ingreso,precio_ingreso,descuento_compra FROM detalleingreso WHERE id_detalleingreso = '$idcompra' ");
+			$total = 0;
+			while ($result = $sqlp->fetch_row()) {
+				$total=$total+(($result[1]-$result[2])*$result[0]);
+			}
+			return $total;
+		}
 	}
 
 

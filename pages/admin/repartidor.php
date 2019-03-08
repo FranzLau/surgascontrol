@@ -12,17 +12,16 @@
 	<?php include('navbar.php'); ?>
 	
 	<div class="container">
-		<div class="row mt-5">
+		<div class="row mt-4">
 			<div class="col-sm-12 text-center text-lg-left d-md-flex">
 				<h4 class="font-primary my-auto">REGISTRO DE <strong>PARTIDAS</strong></h4>
 			</div>
 		</div>
-    <hr>
     <!--************************************************************************-->
     <div class="row mt-3">
       <div class="col-sm-12">
         <nav>
-          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <div class="nav nav-tabs pt-2 px-2" style="background:#E8EAF6; border: 1px solid #D6DBDF" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active font-primary" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-file"></i> Nueva Partida</a>
             <a class="nav-item nav-link font-primary" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fas fa-file-alt"></i> Mis partidas</a>
           </div>
@@ -118,23 +117,20 @@
                         </div>
                       </div>
                     </div>
+                    <div id="TablaPartidaTempLoad">
+                      <!--Aqui va la table temporal-->
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-sm-12">
-                <div id="TablaPartidaTempLoad"></div>
-              </div>
-            </div>	
-          
           </div>
           <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             <div class="row">
               <div class="col-sm-12">
                 <div class="card border-top-0">
                   <div class="card-body">
-                    <div id="tabRecarga" class="table-responsive"></div>
+                    <div id="tablaPartidas" class="table-responsive"></div>
                   </div>
                 </div>
               </div>
@@ -149,7 +145,7 @@
 	<script>
 		$(document).ready(function() {
       $('#TablaPartidaTempLoad').load("../componentes/tablePartidaTemp.php");
-      $('#tabRecarga').load('../componentes/tablepartidas.php');
+      $('#tablaPartidas').load('../componentes/tablepartidas.php');
       $('#parprodu').change(function(){
         $.ajax({
           url: '../../procesos/ventas/llenarformproducto.php',

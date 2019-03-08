@@ -7,9 +7,10 @@ $obj = new ventas();
 $nowfecha = date('Y-m-d');
 $sqlr = $con->query("SELECT * FROM repartidor WHERE fecha_re='$nowfecha' GROUP BY id_repartidor ");
  ?>
-<table class="table table-hover table-sm" id="tablerec">
+<table class="table table-hover table-sm table-bordered" id="tablerec">
   <thead class="font-primary">
     <tr>
+      <th>ID</th>
       <th>FECHA</th>
       <th>CHOFER</th>
       <th>PRODUCTO</th>
@@ -20,6 +21,7 @@ $sqlr = $con->query("SELECT * FROM repartidor WHERE fecha_re='$nowfecha' GROUP B
   <tbody class="bg-white">
     <?php while($verep = $sqlr->fetch_row()){ ?>
     <tr>
+      <td><?php echo $verep[0] ?></td>
       <td><?php echo $verep[2] ?></td>
       <td><?php echo $obj->nombreEmpleado($verep[4]) ?></td>
       <td><?php echo $obj->nombreProducto($verep[1]) ?></td>

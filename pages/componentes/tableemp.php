@@ -6,13 +6,14 @@
    <table class="table table-hover table-sm" id="tablemp">
      <thead class="font-primary">
          <tr>
-             <th>NOMBRE</th>
-             <th>DNI</th>
-             <th>TELÉFONO</th>
-             <th>CARGO</th>
-             <th>ESTADO</th>
-             <th>ACCESO</th>
-             <th>ACCIONES</th>
+          <th>ID</th>
+          <th>NOMBRE</th>
+          <th>DNI</th>
+          <th>TELÉFONO</th>
+          <th>CARGO</th>
+          <th>ESTADO</th>
+          <th>ACCESO</th>
+          <th>ACCIONES</th>
          </tr>
      </thead>
      <tbody class="bg-white">
@@ -20,6 +21,7 @@
          while($mostrar = $sql->fetch_row()){
          ?>
          <tr>
+            <td><?php echo $mostrar[0] ?></td>
             <td><?php echo $mostrar[1]." ".$mostrar[2] ?></td>
             <td><?php echo $mostrar[5] ?></td>
             <td><?php echo $mostrar[7] ?></td>

@@ -5,9 +5,9 @@
  ?>
  <div class="row mt-3">
    <div class="col-sm-8">
-    <table class="table table-sm table-hover">
-      <thead class="bg-light">
-        <tr class="table-success">
+    <table class="table table-sm table-bordered">
+      <thead>
+        <tr>
           <th scope="col">Cant.</th>
           <th scope="col">Producto</th>
           <th scope="col">Precio</th>
@@ -54,8 +54,8 @@
          <h3 style="color: #6FF60B">s/. <?php echo $total; ?></h3>
        </div>
        <div class="card-body">
-         <p id="clienteVent"></p>
-         <button class="btn btn-success w-100" onclick="crearVentas()"><i class="fas fa-dollar-sign"></i> Generar Venta</button>
+         <p><i class="fas fa-shopping-cart mr-2"></i><span id="clienteVent"></span></p>
+         <button class="btn btn-success w-100" onclick="crearVentas()"><i class="fas fa-save mr-2"></i>Generar Venta</button>
        </div>
      </div>
    </div>
@@ -63,6 +63,6 @@
 <script>
   $(document).ready(function() {
     nombre = "<?php echo @$cliente ?>";
-    $('#clienteVent').text("Cliente : "+nombre);
+    $('#clienteVent').text(nombre);
   });
 </script>

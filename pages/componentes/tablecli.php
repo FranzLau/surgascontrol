@@ -6,6 +6,7 @@
   <table class="table table-hover table-sm" id="tablecli">
     <thead class="font-primary">
         <tr>
+            <th>ID</th>
             <th>NOMBRE</th>
             <th>N° DOC</th>
             <th>DIRECCIÓN</th>
@@ -19,6 +20,7 @@
         while($mostrarcli = $sql->fetch_row()){
       ?>
       <tr>
+        <td><?php echo $mostrarcli[0] ?></td>
         <td><?php echo $mostrarcli[1]." ".$mostrarcli[2] ?></td>
         <td><?php echo $mostrarcli[3] ?></td>
         <td><?php echo $mostrarcli[4] ?></td>

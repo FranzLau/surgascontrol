@@ -10,7 +10,7 @@
       <th>FOLIO</th>
       <th>FECHA</th>
       <th>CLIENTE</th>
-      <th>TIPO</th>
+      
       <th>TOTAL</th>
       <th>TICKET</th>
       <th>REPORTE</th>
@@ -30,7 +30,7 @@
           }
          ?>
       </td>
-      <td><?php echo $ver[3] ?></td>
+      
       <td>
         <?php 
           echo "S/.".$obj->obtenerTotal($ver[0],$ver[4]);

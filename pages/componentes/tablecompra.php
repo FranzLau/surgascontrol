@@ -1,18 +1,19 @@
 <?php
-    require '../../config/conexion.php';
-    $sql = $con->query("SELECT nom_emp,razon_social,nom_producto,fecha_in,stock_llenoinicial,precio_compra,precio_venta FROM detalleingreso INNER JOIN empleado ON detalleingreso.id_emp=empleado.id_emp INNER JOIN proveedor ON detalleingreso.id_proveedor=proveedor.id_proveedor INNER JOIN producto ON detalleingreso.id_producto=producto.id_producto");
+require '../../config/conexion.php';
+require '../../config/ventas.php';
+$obj = new ventas();
+$sql = $con->query("SELECT * FROM detalleingreso GROUP BY id_detalleingreso");
 ?>
  <div class="table-responsive">
-   <table class="table table-hover table-sm" id="tableComp">
+   <table class="table table-hover table-sm table-bordered" id="tableComp">
      <thead class="font-primary">
          <tr>
+            <th>#</th>
             <th>FECHA</th>
             <th>EMPLEADO</th>
             <th>PROVEEDOR</th>
-            <th>PRODUCTO</th>
-            <th>CANTIDAD</th>
-            <th>COMPRO</th>
-            <th>VENDO</th>
+            <th>TOTAL</th>
+            <th>PDF</th>
          </tr>
      </thead>
      <tbody class="bg-white">
@@ -20,13 +21,18 @@
          while($mostrar = $sql->fetch_row()){
          ?>
          <tr>
-            <td><?php echo $mostrar[3] ?></td>
             <td><?php echo $mostrar[0] ?></td>
-            <td><?php echo $mostrar[1] ?></td>
-            <td><?php echo $mostrar[2] ?></td>
             <td><?php echo $mostrar[4] ?></td>
-            <td><?php echo $mostrar[5] ?></td>
-            <td><?php echo $mostrar[6] ?></td>
+            <td><?php echo $obj->nombreEmpleado($mostrar[7]) ?></td>
+            <td><?php echo $obj->nombreProveedor($mostrar[8]) ?></td>
+            <td>
+              <?php 
+                echo "S/.".$obj->TotalCompra($mostrar[0]);
+              ?>
+            </td>
+            <td>
+              <a href="../../procesos/ventas/crearReportepdf.php?idcompra=<?php echo $ver[0] ?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i> Reporte</a>
+            </td>
          </tr>
          <?php
            }

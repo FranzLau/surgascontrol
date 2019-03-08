@@ -10,6 +10,7 @@ $sqlr = $con->query("SELECT * FROM recarga WHERE fecha_recarga='$recfecha' GROUP
 <table class="table table-hover table-sm" id="tablRecargas">
    <thead class="font-primary">
       <tr>
+         <th>ID</th>
          <th>FECHA</th>
          <th>CHOFER</th>
          <th>TIPO</th>
@@ -21,6 +22,7 @@ $sqlr = $con->query("SELECT * FROM recarga WHERE fecha_recarga='$recfecha' GROUP
    <tbody class="bg-white">
       <?php while($verec = $sqlr->fetch_row()){ ?>
       <tr>
+         <td><?php echo $verec[0] ?></td>
          <td><?php echo $verec[4] ?></td>
          <td><?php echo $obj->nombreEmpleado($verec[2]) ?></td>
          <td><?php echo $verec[5] ?></td>

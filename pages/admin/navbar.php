@@ -145,10 +145,10 @@
 }
 </style>
 <?php include('../../modal/modalhelp.php'); ?>
-<nav class="navbar navbar-expand-lg py-4">
+<nav class="navbar navbar-expand-lg">
   <div class="container">
       <a class="navbar-brand" href="index.php">
-          <img src="../../assets/css/img/logo2me.png" alt="" height="40px">
+          <img src="../../assets/css/img/logo2me.png" alt="" height="30px">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars fa-lg" style="color:#ffff"></i>
@@ -195,9 +195,9 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="trabajador.php"><i class="fas fa-fire"></i> Empleados</a>
-              <a class="dropdown-item" href="cargo.php"><i class="fas fa-fire"></i> Especialidad</a>
+              <!--<a class="dropdown-item" href="cargo.php"><i class="fas fa-fire"></i> Especialidad</a>-->
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="cliente.php"><i class="fas fa-fire"></i> Mis Clientes</a>
+              <a class="dropdown-item" href="cliente.php"><i class="fas fa-fire"></i> Clientes</a>
               <a class="dropdown-item" href="proveedor.php"><i class="fas fa-fire"></i> Proveedores</a>
             </div>
           </li>

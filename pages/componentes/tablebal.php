@@ -7,6 +7,7 @@
   <table class="table table-hover table-sm" id="tablebal">
     <thead class="font-primary">
         <tr>
+            <th>ID</th>
             <th>NOMBRE</th>
             <th>LLENOS</th>
             <th>VACIOS</th>
@@ -20,6 +21,7 @@
     <tbody class="bg-white">
         <?php while($mostrarprov = $sql->fetch_row()){ ?>
           <tr>
+              <td><?php echo $mostrarprov[0] ?></td>
               <td><?php echo $mostrarprov[1] ?></td>
               <td><?php echo $mostrarprov[3] ?></td>
               <td><?php echo $mostrarprov[4] ?></td>

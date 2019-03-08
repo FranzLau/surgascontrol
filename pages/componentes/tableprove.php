@@ -6,12 +6,13 @@
   <table class="table table-hover table-sm" id="tableprove">
     <thead class="font-primary">
       <tr>
-           <th>NOMBRE</th>
-           <th>SECTOR</th>
-           <th>N° DOC</th>
-           <th>DIRECCIÓN</th>
-           <th>TELÉFONO</th>
-          <th>ACCIONES</th>
+        <th>ID</th>
+        <th>NOMBRE</th>
+        <th>SECTOR</th>
+        <th>N° DOC</th>
+        <th>DIRECCIÓN</th>
+        <th>TELÉFONO</th>
+        <th>ACCIONES</th>
       </tr>
     </thead>
     <tbody class="bg-white">
@@ -19,6 +20,7 @@
         while($mostrarprov = $sql->fetch_row()){
       ?>
       <tr>
+        <td><?php echo $mostrarprov[0] ?></td>
         <td><?php echo $mostrarprov[1] ?></td>
         <td><?php echo $mostrarprov[2] ?></td>
         <td><?php echo $mostrarprov[4] ?></td>

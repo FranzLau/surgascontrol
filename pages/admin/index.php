@@ -65,7 +65,7 @@
           <div class="card-body card-body-pad">
             <img src="../../assets/css/img/circle.svg" class="card-img-absolute" alt="">
             <h4 class="mb-3">
-              Ventas
+              Caja
               <i class="fas fa-money-bill-wave fa-sm float-right"></i>
             </h4>
             <?php 
@@ -77,7 +77,7 @@
             }
             ?>
             <h2 class="mb-5"><?php echo "s./ ".$venta ?></h2>
-            <h5>Venta diaria</h5>
+            <h5>Caja diaria</h5>
           </div>
         </div>
       </div>

@@ -17,14 +17,14 @@
   <div class="container">
     <div class="row mt-5">
       <div class="col-sm-6 text-center text-lg-left d-md-flex">
-        <h4 class="my-auto font-primary">Lista de <strong>Clientes</strong></h4>
+        <h4 class="my-auto font-primary">LISTA DE <strong>CLIENTES</strong></h4>
       </div>
       <div class="col-sm-6 text-center text-lg-right">
         <button type="button" class="btn btn-green-secondary" data-toggle="modal" data-target="#cliModalCenter"><i class="far fa-file fa-sm mr-2"></i> Nuevo Cliente</button>
       </div>
     </div>
     <hr>
-    <div class="row mt-5">
+    <div class="row">
       <div class="col-sm-12">
         <div id="tableCli"></div>
       </div>

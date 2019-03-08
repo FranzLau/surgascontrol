@@ -12,18 +12,18 @@
 	
     <?php include('navbar.php'); ?>
 	<div class="container">
-		<div class="row mt-5">
+		<div class="row mt-4">
 			<div class="col-sm-12 text-center text-lg-left d-md-flex">
-				<h4 class="font-primary my-auto">REGISTRO DE <strong>VENTAS</strong></h4>
+				<h4 class="font-primary my-auto">SECCIÓN DE <strong>VENTAS</strong></h4>
 			</div>
 		</div>
 		<!--******************************************************************************-->
 		<div class="row mt-3">
 			<div class="col-sm-12">
 				<nav>
-					<div class="nav nav-tabs" id="nav-tab" role="tablist">
-						<a class="nav-item nav-link active font-primary" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-file"></i> Nueva Venta</a>
-						<a class="nav-item nav-link font-primary" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fas fa-file-alt"></i> Mis Ventas</a>
+					<div class="nav nav-tabs pt-2 px-2" style="background:#E8EAF6; border: 1px solid #D6DBDF" id="nav-tab" role="tablist">
+						<a class="nav-item nav-link active font-primary" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-file"></i> Registrar Venta</a>
+						<a class="nav-item nav-link font-primary" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fas fa-file-alt"></i> Lista de Ventas</a>
 					</div>
 				</nav>
 				<!--******************************************************************************-->
@@ -59,7 +59,7 @@
 																</div>
 															</div>
 															<div class="form-row">
-																<div class="form-group col-sm-7">
+																<div class="form-group col-sm-12">
 																	<label for="tipoVen" class="col-form-label-sm col-form-label">Venta</label>
 																	<select name="fierroVen" id="fierroVen" class="form-control form-control-sm">
 																		<option selected value="G">Normal (GAS)</option>
@@ -67,13 +67,9 @@
 																		<option value="E">Envase</option>
 																	</select>
 																</div>
-																<div class="form-group col-sm-5">
-																	<label for="" class="col-form-label-sm col-form-label">Monto</label>
-																	<input type="number" step="any" class="form-control form-control-sm" id="preVenta" name="preVenta" readonly>
-																</div>
 															</div>
 														</div><!--****************************-->
-														<div class="col-sm-4" style="border-right: 1px solid #f2f4f4; border-left: 1px solid #f2f4f4">
+														<div class="col-sm-3" style="border-right: 1px solid #f2f4f4; border-left: 1px solid #f2f4f4">
 															<div class="form-row">
 																<div class="form-group col-sm-12">
 																	<label for="producVen" class="col-form-label col-form-label-sm">Producto :</label>
@@ -101,7 +97,7 @@
 																</div>
 															</div>
 														</div><!--****************************-->
-														<div class="col-sm-4">
+														<div class="col-sm-5">
 															<div class="form-row">
 																<div class="form-group col-sm-6">
 																	<label for="cantVen" class="col-form-label col-form-label-sm">Cantidad</label>
@@ -113,13 +109,17 @@
 																</div>
 															</div>
 															<div class="form-row">
-																<div class="form-group col-sm-6">
+																<div class="form-group col-sm-4">
 																		<label for="precioVen" class="col-form-label col-form-label-sm">Precio Zonal</label>
 																		<input readonly="" step="any" type="number" class="form-control form-control-sm" id="precioVenz" name="precioVenz">
 																</div>
-																<div class="form-group col-sm-6">
+																<div class="form-group col-sm-4">
 																	<label for="precioFie" class="col-form-label-sm col-form-label">Precio Envase</label>
 																	<input type="number" step="any" readonly="" class="form-control form-control-sm" id="precioFie" name="precioFie">
+																</div>
+																<div class="form-group col-sm-4">
+																	<label for="" class="col-form-label-sm col-form-label">Monto</label>
+																	<input type="number" step="any" class="form-control form-control-sm" id="preVenta" name="preVenta" readonly>
 																</div>
 															</div>
 														</div><!--****************************-->
@@ -204,7 +204,6 @@
 		    			}
     				}
     			})
-
     		});
 
     		$('#fierroVen').change(function() {
@@ -224,26 +223,26 @@
 
     		$('#btnAgregarVen').click(function() {
     			vacios = validarFrmVacio('frmVentasProducto');
-				if(vacios > 0){
-					alertify.error("Debe llenar todos los campos!");
-					return false;
-				}
-				datos = $('#frmVentasProducto').serialize();
-				$.ajax({
-					url: '../../procesos/ventas/agregaproductotemp.php',
-					type: 'POST',
-					data: datos,
-					success:function(r){
-						if (r==2) {
-							alertify.error('No hay producto');
-						}else if(r==1){
-							alertify.error('Pocos Prodcutos en Stock');
-						}else{
-							$('#TablaVentasTempLoad').load("../componentes/tableVentasTemp.php");
-						}
+					if(vacios > 0){
+						alertify.error("Debe llenar todos los campos!");
+						return false;
 					}
-				})
-			});
+					datos = $('#frmVentasProducto').serialize();
+					$.ajax({
+						url: '../../procesos/ventas/agregaproductotemp.php',
+						type: 'POST',
+						data: datos,
+						success:function(r){
+							if (r==2) {
+								alertify.error('No hay producto');
+							}else if(r==1){
+								alertify.error('Pocos Prodcutos en Stock');
+							}else{
+								$('#TablaVentasTempLoad').load("../componentes/tableVentasTemp.php");
+							}
+						}
+					})
+				});
 
 		    $('#btnLimpiarVen').click(function() {
 		    	$.ajax({
@@ -253,7 +252,6 @@
 		    			$('#TablaVentasTempLoad').load("../componentes/tableVentasTemp.php");
 		    		}
 		    	})
-		    	
 		    });
     	});
     </script>

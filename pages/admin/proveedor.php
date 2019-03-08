@@ -17,14 +17,14 @@
       <div class="container">
         <div class="row mt-5">
           <div class="col-sm-6 text-center text-lg-left d-md-flex">
-            <h4 class="my-md-auto font-primary">Lista de <strong>Proveedores</strong></h4>
+            <h4 class="my-md-auto font-primary">LISTA DE <strong>PROVEEDORES</strong></h4>
           </div>
           <div class="col-sm-6 text-center text-lg-right">
             <button type="button" class="btn btn-green-secondary" data-toggle="modal" data-target="#proveModalCenter"><i class="far fa-file"></i> Nuevo Proveedor</button>
           </div>
         </div>
         <hr>
-        <div class="row mt-5">
+        <div class="row">
           <div class="col-sm-12">
             <div id="tableProv"></div>
           </div>
