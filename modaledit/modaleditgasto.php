@@ -15,14 +15,12 @@
             <label for="Gtotipo" class="col-sm-4 col-form-label">Tipo de Gasto</label>
             <div class="col-sm-8">
               <select class="form-control" id="Gtotipo" name="gastoTi">
-                <?php $tgasto = $con->query("SELECT * FROM tipogasto");
-                    while ($row = $tgasto->fetch_assoc()) {
-                      echo "<option value='".$row['id_tipogasto']."' ";
-                      echo ">";
-                      echo $row['nom_tipogasto'];
-                      echo "</option>";
-                    }
-                ?>
+                <option value="0">Elije una..</option>
+                <option value="Combustible">Combustible</option>
+                <option value="Movilidad">Movilidad</option>
+                <option value="Útiles de Aseo">Útiles de Aseo</option>
+                <option value="Útiles de Oficina">Útiles de Oficina</option>
+                <option value="Otros">Otros</option>
               </select>
             </div>
           </div>

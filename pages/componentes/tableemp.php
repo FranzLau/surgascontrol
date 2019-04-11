@@ -42,8 +42,8 @@
             <td><?php echo $mostrar[9] ?></td>
             <td>
                <div class="btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-purple-warning btn-sm" title="Editar" data-toggle="modal" data-target="#EditempModalCenter" onclick="obtenDatosEmp('<?php echo $mostrar[0] ?>')"><i class="fas fa-edit"></i></button>
-                  <button type="button" class="btn btn-purple-danger btn-sm" title="Eliminar" onclick="eliminarEmple('<?php echo $mostrar[0] ?>')"><i class="fas fa-trash-alt"></i></button>
+                  <button type="button" class="btn btn-inverse-warning btn-sm" title="Editar" data-toggle="modal" data-target="#EditempModalCenter" onclick="obtenDatosEmp('<?php echo $mostrar[0] ?>')"><i class="fas fa-edit"></i></button>
+                  <button type="button" class="btn btn-inverse-danger btn-sm" title="Eliminar" onclick="eliminarEmple('<?php echo $mostrar[0] ?>')"><i class="fas fa-trash-alt"></i></button>
                </div>
             </td>
          </tr>

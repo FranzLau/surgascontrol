@@ -13,162 +13,158 @@
 <body style="background: #F2F4F4">
 	<?php include('navbar.php'); ?>
 	<div class="container">
-		<div class="row mt-4">
-			<div class="col-sm-12 text-center text-lg-left d-md-flex">
-				<h4 class="font-primary my-auto">SECCIÓN DE <strong>RECARGAS</strong></h4>
-			</div>
-		</div>
 		<!--****************************************************************************-->
-		<div class="row mt-3">
+		<div class="row mt-4">
 			<div class="col-sm-12">
-				<nav>
-					<div class="nav nav-tabs pt-2 px-2" style="background:#E8EAF6; border: 1px solid #D6DBDF" id="nav-tab" role="tablist">
-						<a class="nav-item nav-link active font-primary" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-file"></i> Nueva Recarga</a>
-						<a class="nav-item nav-link font-primary" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fas fa-file-alt"></i> Lista de Recargas</a>
-					</div>
-				</nav>
-				<div class="tab-content" id="nav-tabContent">
-					<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+				<div class="card">
+					<div class="card-body">
+						<!--Primera Fila------>
 						<div class="row">
+							<div class="col-sm-6 text-center text-lg-left d-md-flex">
+								<h3 class="my-auto page-title"><i class="fas fa-truck-loading mr-3"></i>Recargas</h3>
+							</div>
+							<div class="col-sm-6">
+								<ul class="nav nav-pills nav-pills-primary justify-content-lg-end justify-content-center" id="pills-tab" role="tablist">
+									<li class="nav-item">
+										<a class="nav-link active font-primary" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><i class="far fa-file mr-2"></i>Nuevo</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link font-primary" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="far fa-file-alt mr-2"></i>Mis Recargas</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-------------------->
+						<!--Segunda Fila------>
+						<div class="row mt-3">
 							<div class="col-sm-12">
-								<div class="card border-top-0">
-									<div class="card-body">
+								<div class="tab-content" id="pills-tabContent">
+									<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 										<div class="row">
-											<div class="col-md-10">
+											<div class="col-sm-4">
 												<form action="" id="formRecargas">
-													<div class="row">
-														<!--**********************************************************-->
-														
-														<div class="col-md-4" style="border-right: 1px solid #f2f4f4; border-left: 1px solid #f2f4f4">
-															<!--**********************************************************-->
-															<div class="form-row">
-																<div class="col-md-12 form-group">
-																	<label for="recargachofer" class="col-form-label col-form-label-sm">Chofer</label>
-																	<select name="recargachofer" id="recargachofer" class="form-control form-control-sm">
-																		<option value="">Elije uno..</option>
-																		<?php 
-																			date_default_timezone_set('America/Lima');
-																			$repfech = date('Y-m-d');
-																			$prod = $con->query("SELECT * FROM repartidor WHERE fecha_re='$repfech' GROUP BY id_repartidor ");
-																			while ($row = $prod->fetch_assoc()) {
-																				echo "<option value='".$row['id_repartidor']."' ";
-																				echo ">";
-																				echo $obj->nombreEmpleado($row['id_emp']);
-																				
-																				echo "</option>";
-																			}
-																		?>
-																	</select>
-																</div>
-															</div>
-															<!--**********************************************************-->
-															<div class="form-row">
-																<div class="form-group col-sm-12">
-																	<label for="recargaopcion" class="col-form-label col-form-label-sm">Tipo</label>
-																	<select name="recargaopcion" id="recargaopcion" class="form-control form-control-sm">
-																		<option value="S">Salida</option>
-																		<option value="E">Entrada</option>
-																	</select>
-																</div>
-																
-															</div>
-														</div>
-														<!--**********************************************************-->
+													<div class="row form-group">
+														<label for="recargachofer" class="col-form-label col-form-label-sm col-sm-4">Chofer</label>
 														<div class="col-md-8">
-															<div class="form-row">
-																<div class="col-sm-4 form-group">
-																	<label for="recargaprod" class="col-form-label col-form-label-sm">Producto</label>
-																	<select name="recargaprod" id="recargaprod" class="form-control form-control-sm">
-																		<option value="">Elije uno..</option>
-																		<?php $prod = $con->query("SELECT * FROM producto");
-																			while ($row = $prod->fetch_assoc()) {
-																				echo "<option value='".$row['id_producto']."' ";
-																				echo ">";
-																				echo $row['nom_producto'];
-																				echo "</option>";
-																			}
-																		?>
-																	</select>
-																</div>
-																<div class="form-group col-md-3">
-																	<label for="recargaestado" class="col-form-label col-form-label-sm">Estado</label>
-																	<select name="recargaestado" id="recargaestado" class="form-control form-control-sm">
-																		<option value="G">Solo GAS</option>
-																		<option value="G/E">Gas + Envase</option>
-																		<option value="E">Solo Envase</option>
-																	</select>
-																</div>
-
-																<div class="col-sm-3 form-group">
-																	<label for="recargatipo" class="col-form-label col-form-label-sm">Balon</label>
-																	<select name="recargatipo" id="recargatipo" class="form-control form-control-sm">
-																		<option value="N">Normal</option>
-																		<option value="P">Prestado</option>
-																		<option value="V">Vendido</option>
-																		<option value="R">Robado</option>
-																	</select>
-																</div>
-																<div class="col-sm-2 form-group">
-																	<label for="recargacant" class="col-form-label col-form-label-sm">Cantidad</label>
-																	<input type="number" name="recargacant" id="recargacant" class="form-control form-control-sm">
-																</div>
-															</div>
-															<div class="form row">
-																<div class="col-sm-4 form-group">
-																	<label for="recargaprec" class="col-form-label col-form-label-sm">Precio</label>
-																	<input type="number" step="any" name="recargaprec" id="recargaprec" class="form-control form-control-sm" readonly>
-																</div>
-																<div class="col-sm-4 form-group">
-																	<label for="recargaenv" class="col-form-label col-form-label-sm">P. Envase</label>
-																	<input type="number" step="any" name="recargaenv" id="recargaenv" class="form-control form-control-sm" readonly>
-																</div>
-																<div class="col-sm-4 form-group">
-																	<label for="recargapfin" class="col-form-label col-form-label-sm">Sub Total</label>
-																	<input type="number" step="any" name="recargapfin" id="recargapfin" class="form-control form-control-sm" readonly>
-																</div>
-																
-															</div>
+															<select name="recargachofer" id="recargachofer" class="form-control form-control-sm">
+																<option value="">Elije uno..</option>
+																<?php 
+																	date_default_timezone_set('America/Lima');
+																	$repfech = date('Y-m-d');
+																	$prod = $con->query("SELECT * FROM repartidor WHERE fecha_re='$repfech' GROUP BY id_repartidor ");
+																	while ($row = $prod->fetch_assoc()) {
+																		echo "<option value='".$row['id_repartidor']."' ";
+																		echo ">";
+																		echo $obj->nombreEmpleado($row['id_emp']);
+																		
+																		echo "</option>";
+																	}
+																?>
+															</select>
 														</div>
-														<!--**********************************************************-->
+													</div>
+													<!--**********************************-->
+													<div class="row form-group">
+														<label for="recargaopcion" class="col-form-label col-form-label-sm col-sm-4">Tipo</label>
+														<div class="col-sm-8">
+															<select name="recargaopcion" id="recargaopcion" class="form-control form-control-sm">
+																<option value="S">Salida</option>
+																<option value="E">Entrada</option>
+															</select>
+														</div>
+													</div>
+													<!--**********************************-->
+													<div class="row form-group">
+														<label for="recargaprod" class="col-form-label col-form-label-sm col-sm-4">Producto</label>
+														<div class="col-sm-8">
+															<select name="recargaprod" id="recargaprod" class="form-control form-control-sm">
+																<option value="">Elije uno..</option>
+																<?php $prod = $con->query("SELECT * FROM producto");
+																	while ($row = $prod->fetch_assoc()) {
+																		echo "<option value='".$row['id_producto']."' ";
+																		echo ">";
+																		echo $row['nom_producto'];
+																		echo "</option>";
+																	}
+																?>
+															</select>
+														</div>
+													</div>
+													<!--**********************************-->
+													<div class="row form-group">
+														<label for="recargaprec" class="col-form-label col-form-label-sm col-sm-4">Precios</label>
+														<div class="col-sm-4">
+															<input type="number" step="any" name="recargaprec" id="recargaprec" class="form-control form-control-sm" readonly>
+														</div>
+														<div class="col-sm-4">
+															<!--<label for="recargaenv" class="col-form-label col-form-label-sm">P. Envase</label>-->
+															<input type="number" step="any" name="recargaenv" id="recargaenv" class="form-control form-control-sm" readonly>
+														</div>
+													</div>
+													<!--**********************************-->
+													<div class="row form-group">
+														<label for="recargaestado" class="col-form-label col-form-label-sm col-sm-4">Estado</label>
+														<div class="col-md-8">
+															<select name="recargaestado" id="recargaestado" class="form-control form-control-sm">
+																<option value="G">Solo GAS</option>
+																<option value="G/E">Gas + Envase</option>
+																<option value="E">Solo Envase</option>
+															</select>
+														</div>
+													</div>
+													<!--**********************************-->
+													<div class="row form-group">
+														<label for="recargatipo" class="col-form-label col-form-label-sm col-sm-4">Balon</label>
+														<div class="col-sm-8">
+															<select name="recargatipo" id="recargatipo" class="form-control form-control-sm">
+																<option value="N">Normal</option>
+																<option value="P">Prestado</option>
+																<option value="V">Vendido</option>
+																<option value="R">Robado</option>
+															</select>
+														</div>
+													</div>
+													<!--**********************************-->
+													<div class="row form-group">
+														<label for="recargacant" class="col-form-label col-form-label-sm col-sm-4">Cantidad</label>
+														<div class="col-sm-4">
+															<input type="number" name="recargacant" id="recargacant" class="form-control form-control-sm">
+														</div>
+														<div class="col-sm-4">
+															<!--<label for="recargapfin" class="col-form-label col-form-label-sm">Sub Total</label>-->
+															<input type="number" step="any" name="recargapfin" id="recargapfin" class="form-control form-control-sm" readonly>
+														</div>
 													</div>
 												</form>
-											</div>
-											<div class="col-md-2 d-flex">
-												<div class="m-auto">
-													<div class="row">
-														<div class="col-md-12">
-															<button class="btn btn-success" id="btnAddRecargar"><i class="fas fa-plus"></i></button>
-														</div>
-													</div>
-													<div class="row mt-3">
-														<div class="col-md-12">
-															<button class="btn btn-danger" id="btnClearRecarga"><i class="fas fa-trash"></i></button>
-														</div>
+												<hr><!--**********************************-->
+												<div class="row">
+													<div class="col-sm-12 text-right">
+														<button class="btn btn-sm btn-danger-melody" id="btnClearRecarga"><i class="fas fa-trash mr-2"></i>Limpiar Lista</button>
+														<button class="btn btn-sm btn-info-melody" id="btnAddRecargar"><i class="fas fa-plus mr-2"></i>Agregar</button>
 													</div>
 												</div>
 											</div>
+											<div class="col-sm-8">
+												<div id="TablaRecargaTempLoad"></div>
+											</div>
 										</div>
-										<!--******************************************************************************-->
-										<div id="TablaRecargaTempLoad"></div>
+									</div>
+									<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+										<div id="tableRecargas" class="table-responsive"></div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-						<div class="row">
-              <div class="col-sm-12">
-                <div class="card border-top-0">
-									<div class="card-body">
-										<div id="tableRecargas" class="table-responsive"></div>
-									</div>
-								</div>
-              </div>
-            </div>
+						<!-------------------->
 					</div>
 				</div>
 			</div>
 		</div>
+		
+
+
+		<!--****************************************************************************-->
+		
 		<!--****************************************************************************************-->
 		<!--****************************************************************************************>-->
 	</div>

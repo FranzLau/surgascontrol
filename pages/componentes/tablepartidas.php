@@ -29,8 +29,8 @@ $sqlr = $con->query("SELECT * FROM repartidor WHERE fecha_re='$nowfecha' GROUP B
       <td class="text-left">
         <div class="btn-group" role="group" aria-label="Basic example">
           <!--<button class="btn btn-purple-info btn-sm" data-toggle="modal" data-target="#VerRecargasModal" onclick="obtenDatosChofer('<?php echo $verep[0] ?>')"><i class="fas fa-eye"></i></button>-->
-          <button class="btn btn-purple-warning btn-sm"><i class="fas fa-edit"></i></button>
-          <button class="btn btn-purple-danger btn-sm" onclick="eliminaPartida('<?php echo $verep[0] ?>')" ><i class="fas fa-trash"></i></button>
+          <button class="btn btn-inverse-warning btn-sm"><i class="fas fa-edit"></i></button>
+          <button class="btn btn-inverse-danger btn-sm" onclick="eliminaPartida('<?php echo $verep[0] ?>')" ><i class="fas fa-trash"></i></button>
         </div>
       </td>
     </tr>

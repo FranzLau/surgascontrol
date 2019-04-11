@@ -91,8 +91,34 @@ h1,h2,h3,h4,h5 {
 	color: #fff;
 }
 /*-----------Estilos para botones ----------------------*/
-
-/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+.btn-purple-primary{
+	color: #fff;
+	background-color: #5659A6;
+	border-color: #5659A6!important;
+}
+.btn-purple-primary:hover{
+	box-shadow: 0px 1px 4px rgba(0,0,0,0.6);
+	cursor: pointer;
+}
+.btn-green-primary{
+	color: #fff;
+	background-color: #43DDC1;
+	border-color: #43DDC1!important;
+}
+.btn-green-primary:hover{
+	box-shadow: 0px 1px 4px rgba(0,0,0,0.6);
+	cursor: pointer;
+}
+.btn-red-primary{
+	color: #fff;
+	background-color: #FF6AB9!important;
+	border-color: #FF6AB9;
+}
+.btn-red-primary:hover{
+	box-shadow: 0px 1px 4px rgba(0,0,0,0.6);
+	cursor: pointer;
+}
+/*++++++++++++++++++++Estilos para Botones de Acciones+++++++++++++++++++++*/
 .btn-purple-danger {
 	background-color: #fff;
 	border-color: #fff;
@@ -216,6 +242,12 @@ h1,h2,h3,h4,h5 {
 .flex-grow{
 	flex-grow: 1;
 }
+/*<<<<<<<<<<<<<<<<<<<<<<<<<< ESTILOS CLASS BOX <<<<<<<<<<<<<<<<<<<<<<<*/
+.compra-link .nav-pills .nav-link.active {
+	background-color: #F2F4F4!important;
+	color: #43DDC1!important;
+}
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 @media (min-width: 768px){
 	.auth.auth-img-bg .auth-form-transparent{
 		width: 55%;

@@ -14,15 +14,85 @@
   <?php include('navbar.php'); ?>
     <!--AQUI VA LA INFORMACION------>
   <div class="container">
+  
+    <!---**************************************************************************
     <div class="row mt-5">
-      <div class="col-sm-6 text-center text-lg-left d-md-flex">
-        <h4 class="my-auto font-primary"><i class="fas fa-chart-pie mr-2"></i> Panel de <strong>Control</strong></h4>
-      </div>
-      <div class="col-sm-6 d-flex justify-content-center justify-content-lg-end">
-        <p class="my-auto">Resumen <i class="fas fa-exclamation-circle"></i></p>
+      <div class="col-sm-6 text-center text-lg-left">
+        <h3 class="page-title">Panel de Control</h3>
       </div>
     </div>
-   <!---****************************************************************************-->
+  ***************************************************************************-->
+    <div class="row mt-5">
+      <div class="col-sm-4">
+        <div class="d-flex">
+          <img src="../../assets/css/img/mansurgas.png" class="m-auto">
+        </div>
+      </div>
+      <div class="col-sm-8 text-white">
+        <div class="row mb-3 mt-3 mt-lg-0">
+          <div class="col-sm-12 text-center text-lg-left">
+            <h3 class="page-title">Panel de Control</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card bg-navbar-primary">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-4 text-center pb-4 pb-lg-0">
+                    <p><i class="fas fa-hourglass-start mr-2"></i>Llenos</p>
+                    <?php 
+                    $sql = $con->query("SELECT SUM(stock_llenos) FROM producto WHERE tipo_producto='Balon' ");
+                    $result = $sql->fetch_row();
+                    $ver = $result[0];
+                    ?>
+                    <h2 class="size-h2"><?php echo $ver; ?></h2>
+                    <label class="badge badge-pill badge-outline-success">27% Increase</label>
+                  </div>
+                  <div class="col-sm-4 text-center pb-4 pb-lg-0">
+                    <p><i class="fas fa-hourglass-half mr-2"></i>Vacios</p>
+                    <?php
+                    $sql = $con->query("SELECT SUM(stock_vacios) FROM producto WHERE tipo_producto='Balon'");
+                    $result = $sql->fetch_row();
+                    $verva = $result[0];
+                    ?>
+                    <h2 class="size-h2"><?php echo $verva ?></h2>
+                    <label class="badge badge-pill badge-outline-success">27% Increase</label>
+                  </div>
+                  
+                  <div class="col-sm-4 text-center">
+                    <p><i class="fas fa-chart-line mr-2"></i>Ventas</p>
+                    <h2 class="size-h2">000</h2>
+                    <label class="badge badge-pill badge-outline-success">27% Increase</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-sm-12">
+            <div class="alert alert-warning" role="alert">
+              <div class="row">
+                <div class="col-sm-4 d-flex mb-3 mb-lg-0">
+                  <h1 class="alert-heading m-auto"><i class="fas fa-exclamation-triangle fa-2x"></i></h1>
+                </div>
+                <div class="col-sm-8">
+                  <p><strong>Advertencia!</strong> Debes aperturar Caja para poder empezar a usar el sistema. Dale click en el enlace de abajo para ingresar el monto correspondiente.</p>
+                  <hr>
+                  <p class="mb-0">Aperturar caja <a href="cajero.php" class="alert-link"> Click Aquí</a>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!---****************************************************************************-->
+  
+  <!---****************************************************************************-->
+   
+  <!---*************************************************************
     <div class="row mt-4">
       <div class="col-sm-4">
         <div class="card card-img-holder bg-gradient-danger text-white border-0">
@@ -82,120 +152,14 @@
         </div>
       </div>
     </div>
-   <!---****************************************************************************-->
-   <!--
-    <div class="row mt-5">
-      <div class="col-sm-6">
-        <div class="card border-0">
-          <div class="card-body card-body-pad">
-            <div class="row">
-              <div class="col-sm-8">
-                <p class="font-primary"><i class="fas fa-warehouse mr-2"></i> Lista de Productos</p>
-              </div>
-              <div class="col-sm-4 text-right">
-                <a href="balones.php"><i class="fas fa-ellipsis-v font-primary"></i></a>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="table-responsive mt-4">
-                  <table class="table table-hover">
-                    <thead class="font-primary">
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">NOMBRE</th>
-                        <th scope="col">LLENOS</th>
-                        <th scope="col">VACIOS</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php 
-                      $num=0;
-                      $sql = $con->query("SELECT * FROM producto");
-                      while ($result = $sql->fetch_row()) {
-                      ?>
-                      <tr>
-                        <td><?php echo $num=$num+1 ?></td>
-                        <td><?php echo $result[1] ?></td>
-                        <td><?php echo $result[3] ?></td>
-                        <td><?php echo $result[4] ?></td>
-                      </tr>
-                    <?php } ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="card border-0">
-          <div class="card-body card-body-pad">
-            <div class="row">
-              <div class="col-sm-8">
-                <p class="font-primary"><i class="fas fa-truck mr-2"></i> Repartidores de Hoy</p>
-              </div>
-              <div class="col-sm-4 text-right">
-                <a href="repartidor.php"><i class="fas fa-ellipsis-v font-primary"></i></a>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="table-responsive mt-4">
-                  <table class="table">
-                    <thead class="font-primary">
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Chofer</th>
-                        <th scope="col">Placa</th>
-                        <th scope="col">Cantidad</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      $num=0;
-                      $fechnow = date('Y-m-d');
-                      $obj = new ventas(); 
-                      $sql = $con->query("SELECT * FROM repartidor WHERE fecha_re='$fechnow'");
-                      while ($result = $sql->fetch_row()) {
-                      ?>
-                      <tr>
-                        <td><?php echo $num=$num+1 ?></td>
-                        <td><?php echo $obj->nombreEmpleado($result[5]) ?></td>
-                        <td><?php echo $result[1] ?></td>
-                        <td><?php echo $result[4] ?></td>
-                      </tr>
-                      <?php } ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    -->
- <!---****************************************************************************-->
-    <div class="row mt-4">
-      <div class="col-sm-12">
-        <div class="card bg-gradient-box">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-12 d-flex">
-                <h2 class="m-auto"><i class="fas fa-phone-volume mr-3"></i>PEDIDOS : (052) 247070 - (052) 248080</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <footer class="footer mt-4">
+  </div>
+  ************************************************************-->
+  <hr>
+  <div class="container">
+    <footer class="footer">
       <div class="d-sm-flex justify-content-sm-between justify-content-center">
         <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
-          Copyright <i class="far fa-copyright"></i>2018 
+          Copyright <i class="far fa-copyright"></i>2019 
           <a href="#" target="_blank">SURGAS</a>. Todos los derechos reservados
         </span>
         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
@@ -204,7 +168,9 @@
       </div>
     </footer>
   </div>
-    <?php include('scripts.php'); ?>
+  <!---****************************************************************************-->
+  <?php include('scripts.php'); ?>
+  <!---****************************************************************************-->
 </body>
 </html>
 <?php 

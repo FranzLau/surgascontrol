@@ -19,7 +19,8 @@
 
     <link rel="stylesheet" href="assets/alertify/css/alertify.css">
     <link rel="stylesheet" href="assets/alertify/css/themes/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		
 </head>
 <body>
 	
@@ -65,7 +66,7 @@
 				            		<?php endif; ?>
 				            	</div>
 				            	<div class="col-sm-6 text-right">
-				            		<button class="btn btn-green-secondary w-100"  id="btnlg">INGRESAR</button>
+				            		<button class="btn btn-success-melody w-100"  id="btnlg">INGRESAR</button>
 				            	</div>
 				            </div>
 						</div>

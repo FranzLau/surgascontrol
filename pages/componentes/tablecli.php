@@ -15,7 +15,7 @@
             <th>ACCIONES</th>
         </tr>
     </thead>
-    <tbody class="bg-white">
+    <tbody>
       <?php
         while($mostrarcli = $sql->fetch_row()){
       ?>
@@ -28,8 +28,8 @@
         <td><?php echo $mostrarcli[6] ?></td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-purple-warning btn-sm" title="Editar" data-toggle="modal" data-target="#editcliModalCenter" onclick="obtencliente('<?php echo $mostrarcli[0] ?>')"><i class="fas fa-edit"></i></button>
-            <button type="button" class="btn-sm btn btn-purple-danger" title="Eliminar" onclick="eliminarcliente('<?php echo $mostrarcli[0] ?>')"><i class="fas fa-trash-alt"></i></button>
+            <button type="button" class="btn btn-inverse-warning btn-sm" title="Editar" data-toggle="modal" data-target="#editcliModalCenter" onclick="obtencliente('<?php echo $mostrarcli[0] ?>')"><i class="fas fa-edit"></i></button>
+            <button type="button" class="btn-sm btn btn-inverse-danger" title="Eliminar" onclick="eliminarcliente('<?php echo $mostrarcli[0] ?>')"><i class="fas fa-trash-alt"></i></button>
           </div>
         </td>
       </tr>

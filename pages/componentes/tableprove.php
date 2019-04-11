@@ -28,8 +28,8 @@
         <td><?php echo $mostrarprov[6] ?></td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-purple-warning btn-sm" title="Editar" data-toggle="modal" data-target="#VerprovModalCenter" onclick="obtenDatosProve('<?php echo $mostrarprov[0] ?>')"><i class="fas fa-edit"></i></button>
-            <button type="button" class="btn btn-purple-danger btn-sm" title="Eliminar" onclick="eliminarProve('<?php echo $mostrarprov[0] ?>')"><i class="fas fa-trash-alt"></i></button>
+            <button type="button" class="btn btn-inverse-warning btn-sm" title="Editar" data-toggle="modal" data-target="#VerprovModalCenter" onclick="obtenDatosProve('<?php echo $mostrarprov[0] ?>')"><i class="fas fa-edit"></i></button>
+            <button type="button" class="btn btn-inverse-danger btn-sm" title="Eliminar" onclick="eliminarProve('<?php echo $mostrarprov[0] ?>')"><i class="fas fa-trash-alt"></i></button>
           </div>
         </td>
       </tr>

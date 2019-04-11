@@ -2,9 +2,9 @@
   require '../../config/conexion.php';
   $sql = $con->query("SELECT * FROM gasto ");
  ?>
-<div class="mt-4 table-responsive">
+<div class="table-responsive">
   <table class="table table-sm table-hover" id="tableGto">
-    <thead class="font-primary">
+    <thead>
       <tr>
         <th>Fecha</th>
         <th>Empleado</th>
@@ -15,7 +15,7 @@
       </tr>
     </thead>
     
-    <tbody class="bg-white">
+    <tbody>
       <?php while($vergasto = $sql->fetch_row()){ ?>
         <tr>
           <td><?php echo $vergasto[3] ?></td>
@@ -25,8 +25,8 @@
           <td><?php echo $vergasto[1] ?></td>
           <td>
             
-            <button type="button" class="btn btn-warning btn-sm" title="Editar" data-toggle="modal" data-target="#GastoModalEdit" onclick="obtenDatosGasto('<?php echo $vergasto[0] ?>')"><i class="fas fa-edit"></i></button>
-            <button type="button" class="btn btn-danger btn-sm" title="Eliminar" onclick="eliminarGastos('<?php echo $vergasto[0] ?>')"><i class="fas fa-trash-alt"></i></button>
+            <button type="button" class="btn btn-inverse-warning btn-sm" title="Editar" data-toggle="modal" data-target="#GastoModalEdit" onclick="obtenDatosGasto('<?php echo $vergasto[0] ?>')"><i class="fas fa-edit"></i></button>
+            <button type="button" class="btn btn-inverse-danger btn-sm" title="Eliminar" onclick="eliminarGastos('<?php echo $vergasto[0] ?>')"><i class="fas fa-trash-alt"></i></button>
           </td>
         </tr>
        <?php } ?>

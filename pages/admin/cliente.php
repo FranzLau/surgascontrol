@@ -15,20 +15,35 @@
     <?php include('navbar.php'); ?>
 
   <div class="container">
+    
+    <!--<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
     <div class="row mt-5">
-      <div class="col-sm-6 text-center text-lg-left d-md-flex">
-        <h4 class="my-auto font-primary">LISTA DE <strong>CLIENTES</strong></h4>
-      </div>
-      <div class="col-sm-6 text-center text-lg-right">
-        <button type="button" class="btn btn-green-secondary" data-toggle="modal" data-target="#cliModalCenter"><i class="far fa-file fa-sm mr-2"></i> Nuevo Cliente</button>
-      </div>
-    </div>
-    <hr>
-    <div class="row">
       <div class="col-sm-12">
-        <div id="tableCli"></div>
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6 text-center text-lg-left d-md-flex">
+                <h4 class="my-auto page-title"><i class="fas fa-users mr-3"></i>Lista de <strong>Clientes</strong></h4>
+              </div>
+              <div class="col-sm-6 text-center text-lg-right">
+                <button type="button" class="btn btn-primary-melody" data-toggle="modal" data-target="#cliModalCenter"><i class="far fa-file fa-sm mr-2"></i> Nuevo Cliente</button>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div id="tableCli"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
       </div>
     </div>
+    <!--<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
   </div>
     <?php include('scripts.php'); ?>
     <script type="text/javascript">

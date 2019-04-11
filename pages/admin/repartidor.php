@@ -12,124 +12,121 @@
 	<?php include('navbar.php'); ?>
 	
 	<div class="container">
-		<div class="row mt-4">
-			<div class="col-sm-12 text-center text-lg-left d-md-flex">
-				<h4 class="font-primary my-auto">REGISTRO DE <strong>PARTIDAS</strong></h4>
-			</div>
-		</div>
+		<!--<div class="row mt-5">
+			<div class="col-sm-12 ">
+				
+      </div>
+		</div>-->
     <!--************************************************************************-->
-    <div class="row mt-3">
-      <div class="col-sm-12">
-        <nav>
-          <div class="nav nav-tabs pt-2 px-2" style="background:#E8EAF6; border: 1px solid #D6DBDF" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active font-primary" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-file"></i> Nueva Partida</a>
-            <a class="nav-item nav-link font-primary" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fas fa-file-alt"></i> Mis partidas</a>
-          </div>
-        </nav>
-        <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    <div class="row mt-5">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
             <div class="row">
-              <div class="col-md-12">
-                <div class="card border-top-0">
-                  <div class="card-body">
+              <div class="col-sm-6 text-center text-lg-left d-md-flex">
+                <h3 class="my-lg-auto page-title"><i class="fas fa-people-carry mr-3"></i>Repartidores</h3>
+              </div>
+              <div class="col-sm-6">
+                <ul class="nav nav-pills nav-pills-primary justify-content-center justify-content-lg-end" id="pills-tab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active font-primary" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><i class="far fa-file mr-2"></i>Nuevo</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link font-primary" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="far fa-file-alt mr-2"></i>Mis Partidas</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-12">
+                <div class="tab-content" id="pills-tabContent">
+                  <!--*************************************************************-->
+                  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <div class="row">
-                      <div class="col-md-10">
+                      <div class="col-sm-5">
                         <form action="" id="formPartidaCho">
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-row">
-                                <div class="form-group col-md-12">
-                                  <label for="parChof" class="col-form-label col-form-label-sm">Chofer :</label>
-                                  <select class="form-control form-control-sm" name="parChof" id="parChof">
-                                    <option value="">Elije uno..</option>
-                                    <?php $prod = $con->query("SELECT * FROM empleado");
-                                        while ($row = $prod->fetch_assoc()) {
-                                          echo "<option value='".$row['id_emp']."' ";
-                                          echo ">";
-                                          echo $row['nom_emp'];
-                                          echo " ";
-                                          echo $row['ape_emp'];
-                                          echo "</option>";
-                                        }
-                                    ?>
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="form-row">
-                                <div class="form-group col-sm-12">
-                                  <label for="tipobalon" class="col-form-label col-form-label-sm">Tipo Balon :</label>
-                                  <select name="tipobal" id="tipobalon" class="form-control form-control-sm">
-                                    <option value="cg">Gas + Envase</option>
-                                    <option value="sg">Solo Envase</option>
-                                  </select> 
-                                </div>
-                                
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-row">
-                                <div class="form-group col-sm-6">
-                                  <label for="parprodu" class="col-form-label col-form-label-sm">Producto :</label>
-                                  <select name="parprodu" class="form-control form-control-sm" id="parprodu">
-                                    <option value="">Elije uno..</option>
-                                    <?php $prod = $con->query("SELECT * FROM producto");
-                                      while ($row = $prod->fetch_assoc()) {
-                                        echo "<option value='".$row['id_producto']."' ";
-                                        echo ">";
-                                        echo $row['nom_producto'];
-                                        echo "</option>";
-                                      }
-                                    ?>
-                                  </select>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                  <label for="parcantidad" class="col-form-label col-form-label-sm ">Cantidad :</label>
-                                  <input type="number" class="form-control form-control-sm" id="parcantidad" name="parcantidad">
-                                </div>
-                              </div>
-                              <div class="form-row">
-                                
-                                <div class="form-group col-sm-6">
-                                  <label for="parlle" class="col-form-label col-form-label-sm ">Llenos:</label>
-                                  <input type="text" class="form-control form-control-sm" id="parlle" name="parlle" readonly>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                  <label for="parvac" class="col-form-label col-form-label-sm ">Vacios:</label>
-                                  <input type="text" class="form-control form-control-sm" id="parvac" name="parvacd" readonly>
-                                </div>
-                              </div>
+                          <div class="row form-group">
+                            <label for="parChof" class="col-form-label col-form-label-sm col-sm-4">Chofer :</label>
+                            <div class="col-sm-8">
+                              <select class="form-control form-control-sm" name="parChof" id="parChof">
+                                <option value="">Elije uno..</option>
+                                <?php $prod = $con->query("SELECT * FROM empleado WHERE cargo_emp='Chofer' AND estado_emp='Activo'");
+                                    while ($row = $prod->fetch_assoc()) {
+                                      echo "<option value='".$row['id_emp']."' ";
+                                      echo ">";
+                                      echo $row['nom_emp'];
+                                      echo " ";
+                                      echo $row['ape_emp'];
+                                      echo "</option>";
+                                    }
+                                ?>
+                              </select>
                             </div>
                           </div>
+                          <!--*************************-->
+                          <div class="row form-group">
+                            <label for="tipobalon" class="col-form-label col-form-label-sm col-sm-4">Tipo Balon :</label>
+                            <div class="col-sm-8">
+                              <select name="tipobal" id="tipobalon" class="form-control form-control-sm">
+                                <option value="cg">Gas + Envase</option>
+                                <option value="sg">Solo Envase</option>
+                              </select> 
+                            </div>
+                          </div>
+                          <!--*************************-->
+                          
+                          <!--*************************-->
+                          <div class="row form-group">
+                            <label for="parprodu" class="col-form-label col-form-label-sm col-sm-4">Producto :</label>
+                            <div class="col-sm-8">
+                              <select name="parprodu" class="form-control form-control-sm" id="parprodu">
+                                <option value="">Elije uno..</option>
+                                <?php $prod = $con->query("SELECT * FROM producto");
+                                  while ($row = $prod->fetch_assoc()) {
+                                    echo "<option value='".$row['id_producto']."' ";
+                                    echo ">";
+                                    echo $row['nom_producto'];
+                                    echo "</option>";
+                                  }
+                                ?>
+                              </select>
+                            </div>
+                          </div>
+                          <!--*************************-->
+                          <div class="row form-group">
+                            <label for="parlle" class="col-form-label col-form-label-sm col-sm-4">Ll/Va</label>
+                            <div class="col-sm-4">
+                              <input type="text" class="form-control form-control-sm" id="parlle" name="parlle" readonly>
+                            </div>
+                            <div class="col-sm-4">
+                              <!--<label for="parvac" class="col-form-label col-form-label-sm ">Vacios:</label>-->
+                              <input type="text" class="form-control form-control-sm" id="parvac" name="parvacd" readonly>
+                            </div>
+                          </div>
+                          <!--*************************-->
+                          <div class="row form-group">
+                            <label for="parcantidad" class="col-form-label col-form-label-sm col-sm-4">Cantidad :</label>
+                            <div class="col-sm-4">
+                              <input type="number" class="form-control form-control-sm" id="parcantidad" name="parcantidad">
+                            </div>
+                          </div>
+                          
                         </form>
-                      </div>
-                      <div class="col-md-2 d-flex">
-                        <div class="m-auto">
-                          <div class="row">
-                            <div class="col-md-12">
-                              <button class="btn btn-success mr-2" id="btnAgregarPar"><i class="fas fa-plus"></i></button>
-                            </div>
-                          </div>
-                          <div class="row mt-3">
-                            <div class="col-md-12">
-                              <button class="btn btn-danger" id="btnLimpiarPart"><i class="fas fa-trash-alt"></i></button>
-                            </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-md-12 text-right">
+                            <button class="btn btn-danger-melody btn-sm" id="btnLimpiarPart"><i class="fas fa-trash-alt mr-2"></i>Vaciar Lista</button>
+                            <button class="btn btn-info-melody btn-sm" id="btnAgregarPar"><i class="fas fa-plus mr-2"></i>Agregar</button>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div id="TablaPartidaTempLoad">
-                      <!--Aqui va la table temporal-->
+                      <div class="col-sm-7">
+                        <div id="TablaPartidaTempLoad"></div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="card border-top-0">
-                  <div class="card-body">
+                  <!--************************************************************************-->
+                  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                     <div id="tablaPartidas" class="table-responsive"></div>
                   </div>
                 </div>
@@ -139,6 +136,8 @@
         </div>
       </div>
     </div>
+    <!--************************************************************************-->
+   
 		
 	</div>
 	<?php include('scripts.php'); ?>
@@ -180,7 +179,7 @@
     			success:function(r){
     				if (r > 0) {
               $('#TablaPartidaTempLoad').load("../componentes/tablePartidaTemp.php");
-              $('#tabRecarga').load('../componentes/tablepartidas.php');
+              $('#tablaPartidas').load('../componentes/tablepartidas.php');
     					$('#formPartidaCho')[0].reset();
     					alertify.alert("Partida creada con Exito, consulte las Partidas");
     				}else if(r == 0){

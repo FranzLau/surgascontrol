@@ -12,58 +12,93 @@
     <?php include('navbar.php'); ?>
     <div class="container">
       <div class="row mt-5">
-        <div class="col-sm-6 text-center text-lg-left d-md-flex">
-          <h4 class="my-auto font-primary">Cierre de <strong>Caja</strong></h4>
-        </div>
-        <div class="col-sm-6 justify-content-center justify-content-lg-end d-flex">
-          <p class="my-auto font-primary"><a href="misliquidaciones.php">Mis Liquidaciones</a></p>
-        </div>
-      </div>
-      <div class="row mt-3">
         <div class="col-sm-12">
-          <div class="card border-0">
+          <div class="card">
             <div class="card-body">
               <div class="row">
-                <div class="col-sm-8">
-                <form action="" id="formCaja">
-                  <div class="form-row">
-                    <?php
-                      date_default_timezone_set('America/Lima');
-                      $fechi = date('Y-m-d');
-                    ?>
-                    <div class="form-group col-sm-3">
-                      <label for="fechacajero" class="col-form-label col-form-label-sm">Fecha</label>
-                      <input id="fechacajero" class="form-control form-control-sm" type="date" readonly value="<?php echo $fechi ?>">
-                    </div>
-                  </div>
-                  <div class="form-row">
-                  <?php
-                    $sql=$con->query("SELECT SUM(precio_gasto) FROM gasto WHERE fecha_gasto='$fechi'");
-                    $result=$sql->fetch_row();
-                  ?>
-                    <div class="form-group col-sm-3">
-                      <label for="ventaZon" class="col-form-label col-form-label-sm">Ventas Zonal</label>
-                      <input id="ventaZon" step="any" name="ventaZon" readonly class="form-control form-control-sm" type="number">
-                    </div>
-                    <div class="form-group col-sm-3">
-                      <label for="liquidoZon" class="col-form-label col-form-label-sm">Monto Liquidación</label>
-                      <input id="liquidoZon" step="any" name="liquidoZon" readonly class="form-control form-control-sm" type="number">
-                    </div>
-                    <div class="form-group col-sm-3">
-                      <label for="gastoZon" class="col-form-label col-form-label-sm">Gastos Zonal</label>
-                      <input id="gastoZon" step="any" name="gastoZon" readonly class="form-control form-control-sm" type="number">
-                    </div>
-                    <div class="form-group col-sm-3">
-                      <label for="totalZon" class="col-form-label col-form-label-sm">Total Caja</label>
-                      <input id="totalZon" name="totalZon" step="any" readonly class="form-control form-control-sm" type="number" name="cajaemp">
-                    </div>
-                  </div>
-                </form>
+                <div class="col-sm-6 text-center text-lg-left d-md-flex">
+                  <h4 class="my-auto page-title">Cierre de <strong>Caja</strong></h4>
                 </div>
-                <div class="col-sm-4 d-flex">
-                  <div class="m-auto">
-                    <button type="button" id="btnviewDate" class="btn btn-warning w-75 mb-3"> <i class="fas fa-check fa-xs mr-2"></i> Validar</button>
-                    <button type="button" id="btnsaveDate" class="btn btn-success w-75" disabled="disabled"><i class="fas fa-save fa-xs mr-2"></i> Guardar</button>
+                <div class="col-sm-6">
+                  <ul class="nav nav-pills nav-pills-primary justify-content-lg-end justify-content-center" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><i class="fas fa-file mr-2"></i>Nuevo</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="fas fa-file-alt mr-2"></i>Cierres</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+                    </li>
+                  </ul>
+                </div>
+              </div><!--xxxxxxx fin de fila 01-->
+              <div class="row mt-3">
+                <div class="col-sm-12">
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <form action="" id="formCaja">
+                            <div class="row form-group">
+                              <?php
+                                date_default_timezone_set('America/Lima');
+                                $fechi = date('Y-m-d');
+                              ?>
+                              <label for="fechacajero" class="col-form-label col-form-label-sm col-sm-4">Fecha</label>
+                              <div class="col-sm-8">
+                                <input id="fechacajero" class="form-control form-control-sm" type="date" readonly value="<?php echo $fechi ?>">
+                              </div>
+                            </div>
+                            <div class="row form-group">
+                              <label for="ventaZon" class="col-form-label col-form-label-sm col-sm-4">Ventas Zonal</label>
+                              <div class="col-sm-8">
+                                <input id="ventaZon" step="any" name="ventaZon" readonly class="form-control form-control-sm" type="number">
+                              </div>
+                            </div>
+                            <div class="row form-group">
+                              <label for="liquidoZon" class="col-form-label col-form-label-sm col-sm-4">Monto Liquidación</label>
+                              <div class="col-sm-8">  
+                                <input id="liquidoZon" step="any" name="liquidoZon" readonly class="form-control form-control-sm" type="number">
+                              </div>
+                            </div>
+                            <div class="row form-group">
+                              <label for="gastoZon" class="col-form-label col-form-label-sm col-sm-4">Gastos Zonal</label>
+                              <?php
+                                $sql=$con->query("SELECT SUM(precio_gasto) FROM gasto WHERE fecha_gasto='$fechi'");
+                                $result=$sql->fetch_row();
+                              ?>
+                              <div class="col-sm-8">
+                                <input id="gastoZon" step="any" name="gastoZon" readonly class="form-control form-control-sm" type="number">
+                              </div>
+                            </div>
+                          </form>
+                        </div><!--xxxxx fin de col 06 panel-->
+                        <div class="col-sm-6">
+                          <div class="row form-group">
+                            <label for="totalZon" class="col-form-label col-sm-4">Total Caja</label>
+                            <div class="col-sm-4">
+                              <input id="totalZon" name="totalZon" step="any" readonly class="form-control" type="number" name="cajaemp">
+                            </div>
+                            <div class="col-sm-4">
+                              <button type="button" id="btnviewDate" class="btn btn-warning-melody w-100"> <i class="fas fa-check mr-2"></i> Validar</button>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <button type="button" id="btnsaveDate" class="btn btn-success-melody w-100"><i class="fas fa-save mr-2"></i>Guardar</button>
+                            </div>
+                          </div>
+                        </div><!--xxxx fin de col 06 panel 01-->
+                      </div><!--xxxx fin de row panel 01-->
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                      <div id="tabCaja" class="table-responsive"></div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                      asdadadsadsadas 03
+                    </div>
                   </div>
                 </div>
               </div>
@@ -71,31 +106,6 @@
           </div>
         </div>
       </div>
-      <div class="row mt-5">
-        <div class="col-sm-6 text-center text-lg-left d-md-flex">
-          <h4 class="my-auto font-primary">Lista de <strong>Cerrajes</strong></h4>
-        </div>
-        <div class="col-sm-6 justify-content-center justify-content-lg-end d-flex">
-          <p class="my-auto font-primary"><a href="misliquidaciones.php">Mis Liquidaciones</a></p>
-        </div>
-      </div>
-      <hr>
-      <div class="row mt-5">
-        <div class="col-sm-12">
-          <div id="tabCaja" class="table-responsive"></div>
-        </div>
-      </div>
-      <footer class="footer mt-5">
-        <div class="d-sm-flex justify-content-sm-between justify-content-center">
-          <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
-            Copyright <i class="far fa-copyright"></i>2018 
-            <a href="#" target="_blank">SURGAS</a>. Todos los derechos reservados
-          </span>
-          <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-            Desarrollado <i class="fas fa-code text-danger"></i> por Franz Cruz <i class="fas fa-laptop text-danger"></i>
-          </span>
-        </div>
-      </footer>
     </div>
     <?php include('scripts.php'); ?>
     <script type="text/javascript">
@@ -116,6 +126,7 @@
             $('#liquidoZon').val(datos['totaliq']);
             $('#ventaZon').val(datos['totalve']);
             $('#totalZon').val(datos['cajafull']);
+
             $('#btnsaveDate').removeAttr('disabled');
             $('#btnviewDate').attr('disabled','disabled');
           }

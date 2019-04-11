@@ -26,3 +26,4 @@
     <script type="text/javascript" src="../../assets/js/agregarec.js"></script>
     <script type="text/javascript" src="../../assets/js/agregapartida.js"></script>
     <script type="text/javascript" src="../../assets/js/agregacaja.js"></script>
+    <script type="text/javascript" src="../../assets/js/agregaliquida.js"></script>

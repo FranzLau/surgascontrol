@@ -21,6 +21,7 @@
 							'precio_fierrophp'=>$result[7]);
 			return $datos;
 		}
+		// ------------------------------- PARA VENTAS ------------------------
 		public function crearVenta(){
 			require 'conexion.php';
 			date_default_timezone_set('America/Lima'); 
@@ -54,7 +55,38 @@
 			}
 			return $r;
 		}
+		public function creaFolio(){
+			require 'conexion.php';
+			$sql = $con->query("SELECT id_detalleventa FROM detalleventa GROUP BY id_detalleventa DESC ");
+			$result = $sql->fetch_row();
+			$id = $result[0];
+			if ($id=="" or $id==null or $id==0) {
+				return 1;
+			}else{
+				return $id + 1;
+			}
+		}
+		public function descuentaCantidad($idproducto,$cantidad,$tipo){
+			require 'conexion.php';
+			$sql = $con->query("SELECT stock_llenos,stock_vacios FROM producto WHERE id_producto='$idproducto' ");
+			$result = $sql->fetch_row();
+			$llenos = $result[0];
+			$vacios = $result[1];
 
+			if ($tipo == "G") {
+				$newllenos = abs($cantidad - $llenos);
+				$newvacios = abs($cantidad + $vacios);
+
+				$sql = $con->query("UPDATE producto SET stock_llenos='$newllenos',stock_vacios='$newvacios' WHERE id_producto='$idproducto' ");
+			}elseif ($tipo=="G/E") {
+				$newllenos = abs($cantidad - $llenos);
+				$sql = $con->query("UPDATE producto SET stock_llenos='$newllenos' WHERE id_producto='$idproducto' ");
+			}else{
+				$newvacios = abs($cantidad - $vacios);
+				$sql = $con->query("UPDATE producto SET stock_vacios='$newvacios' WHERE id_producto='$idproducto' ");
+			}
+		}
+		//------------<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 		public function creaPartida() {
 			require 'conexion.php';
 			date_default_timezone_set('America/Lima'); 
@@ -82,7 +114,17 @@
 			}
 			return $r;
 		}
-
+		public function creaFolioPartida(){
+			require 'conexion.php';
+			$sql = $con->query("SELECT id_repartidor FROM repartidor GROUP BY id_repartidor DESC ");
+			$result = $sql->fetch_row();
+			$id = $result[0];
+			if ($id=="" or $id==null or $id==0) {
+				return 1;
+			}else{
+				return $id + 1;
+			}
+		}
 		public function descuentaCantidadPartida($idprodu,$cantidad,$tipobal){
 			require 'conexion.php';
 			$sql = $con->query("SELECT stock_llenos,stock_vacios FROM producto WHERE id_producto='$idprodu' ");
@@ -98,60 +140,38 @@
 				$sql = $con->query("UPDATE producto SET stock_vacios='$newvacios' WHERE id_producto='$idprodu' ");
 			}
 		}
-
-		public function obtenDetallesRepartidor($idrepartidor){
+		// ---------------- datos para Liquidar repartidor ------------------------------
+		
+		public function obtenDatosRepartidor($idrepartidor){
 			require 'conexion.php';
-			$sql = $con->query("SELECT SUM(llega_vacio),SUM(fierro_prestado),SUM(fierro_vendido) FROM detallerepartidor WHERE id_repartidor='$idrepartidor'");
-			$reparte=$sql->fetch_row();
-			$datos = array('sumvacphp'=>$reparte[0],
-							'sumprephp'=>$reparte[1],
-							'sumvenphp'=>$reparte[2]);
+			$sql = $con->query("SELECT SUM(cantidad_re), id_emp FROM repartidor WHERE id_repartidor='$idrepartidor' ");
+			$result = $sql->fetch_row();
+			$idemp = $result[1];
+			
+			$sqlemp = $con->query("SELECT nom_emp,ape_emp FROM empleado WHERE id_emp='$idemp' ");
+			$datosemp = $sqlemp->fetch_row();
+			$nomemprepar = $datosemp[0]." ".$datosemp[1];
+			
+			$sqlrec = $con->query("SELECT precio_recarga,cantidad_recarga FROM recarga WHERE id_repartidor='$idrepartidor' ");
+			$total = 0;
+			while ($rec = $sqlrec->fetch_row()) {
+				$total = $total+($rec[0]*$rec[1]);
+			}
+
+			$sqlsalir = $con->query("SELECT COUNT(tipo_recarga) FROM recarga WHERE id_repartidor='$idrepartidor' AND tipo_recarga='S' ");
+			$salida=$sqlsalir->fetch_row();
+
+			$datos = array('cantidadinicial'=>$result[0],
+							'repartidoremp'=>$nomemprepar,
+							'numrecargas'=>$salida[0],
+							'preciorecargas'=>$total);
 			return $datos;
-
 		}
-
-		public function descuentaCantidad($idproducto,$cantidad,$tipo){
+		public function nombreRepartidor($idrep){
 			require 'conexion.php';
-			$sql = $con->query("SELECT stock_llenos,stock_vacios FROM producto WHERE id_producto='$idproducto' ");
-			$result = $sql->fetch_row();
-			$llenos = $result[0];
-			$vacios = $result[1];
-
-			if ($tipo == "G") {
-				$newllenos = abs($cantidad - $llenos);
-				$newvacios = abs($cantidad + $vacios);
-
-				$sql = $con->query("UPDATE producto SET stock_llenos='$newllenos',stock_vacios='$newvacios' WHERE id_producto='$idproducto' ");
-			}elseif ($tipo=="G/E") {
-				$newllenos = abs($cantidad - $llenos);
-				$sql = $con->query("UPDATE producto SET stock_llenos='$newllenos' WHERE id_producto='$idproducto' ");
-			}else{
-				$newvacios = abs($cantidad - $vacios);
-				$sql = $con->query("UPDATE producto SET stock_vacios='$newvacios' WHERE id_producto='$idproducto' ");
-			}
-		}
-
-		public function creaFolio(){
-			require 'conexion.php';
-			$sql = $con->query("SELECT id_detalleventa FROM detalleventa GROUP BY id_detalleventa DESC ");
-			$result = $sql->fetch_row();
-			$id = $result[0];
-			if ($id=="" or $id==null or $id==0) {
-				return 1;
-			}else{
-				return $id + 1;
-			}
-		}
-		public function creaFolioPartida(){
-			require 'conexion.php';
-			$sql = $con->query("SELECT id_repartidor FROM repartidor GROUP BY id_repartidor DESC ");
-			$result = $sql->fetch_row();
-			$id = $result[0];
-			if ($id=="" or $id==null or $id==0) {
-				return 1;
-			}else{
-				return $id + 1;
-			}
+			$sql=$con->query("SELECT id_emp FROM repartidor WHERE id_repartidor='$idrep' ");
+			$result=$sql->fetch_row();
+			return self::nombreEmpleado($result[0]);
 		}
 		public function creaFolioRepartidor(){
 			require 'conexion.php';
@@ -164,76 +184,7 @@
 				return $id + 1;
 			}
 		}
-
-		public function nombreCliente($idcliente){
-			require 'conexion.php';
-			$sql = $con->query("SELECT nom_cliente,ape_cliente FROM cliente WHERE id_cliente = '$idcliente' ");
-			$result = $sql->fetch_row();
-			return $result[0]." ".$result[1];
-		}
-		public function obtenerTotal($idventa,$idprodu){
-			require 'conexion.php';
-			$sqlp = $con->query("SELECT cantidad,precio_venta,descuento_ven FROM detalleventa WHERE id_detalleventa = '$idventa' ");
-			$total = 0;
-			while ($result = $sqlp->fetch_row()) {
-				$total=$total+(($result[1]-$result[2])*$result[0]);
-			}
-			return $total;
-		}
-
-		public function totalPartida($idrep){
-			require 'conexion.php';
-			$sqlre = $con->query("SELECT cantidad_re FROM repartidor WHERE id_repartidor = '$idrep' ");
-			$total=0;
-			while ($result=$sqlre->fetch_row()){
-				$total=$total+$result[0];
-			}
-			return $total;
-		}
-
-		public function obtenerMonto($idliqi,$idprodu){
-			require 'conexion.php';
-			$sql=$con->query("SELECT cantidad_li,precio_li,tipo_balon,descuento_li,gasto_li FROM liquidar WHERE id_liquidar='$idliqi' ");
-			$total = 0;
-			while ($result = $sql->fetch_row()) {
-				$total=$total+((($result[1]-$result[3])*$result[0])-$result[4]);
-			}
-			return $total;
-
-		}
-		public function nombreProducto($idprod){
-			require 'conexion.php';
-			$sql=$con->query("SELECT nom_producto FROM producto WHERE id_producto= '$idprod' ");
-			$result = $sql->fetch_row();
-			return $result[0];
-		}
-		public function nombreProveedor($idprove){
-			require 'conexion.php';
-			$sql=$con->query("SELECT razon_social FROM proveedor WHERE id_proveedor= '$idprove' ");
-			$result = $sql->fetch_row();
-			return $result[0];
-		}
-		public function obtenDatosRepartidor($idrep){
-			require 'conexion.php';
-			$sql = $con->query("SELECT cantidad_re,placa_re FROM repartidor WHERE id_repartidor='$idrep' ");
-			$result = $sql->fetch_row();
-			$datos = array('cantiphp'=>$result[0],
-							'placaphp'=>$result[1]);
-			return $datos;
-		}
-		public function nombreRepartidor($idrep){
-			require 'conexion.php';
-			$sql=$con->query("SELECT id_emp FROM repartidor WHERE id_repartidor='$idrep' ");
-			$result=$sql->fetch_row();
-			return self::nombreEmpleado($result[0]);
-		}
-		public function nombreEmpleado($idemp){
-			require 'conexion.php';
-			$sql = $con->query("SELECT nom_emp,ape_emp FROM empleado WHERE id_emp = '$idemp' ");
-			$result = $sql->fetch_row();
-			return $result[0]." ".$result[1];
-		}
-
+		// ------------------------------- funciones para Liquidar ---
 		public function crearLiquidacion(){
 			require 'conexion.php';
 			date_default_timezone_set('America/Lima'); 
@@ -269,6 +220,65 @@
 			}
 			return $r;
 		}
+		//----------------------------------------------------------------------------
+		
+		//------- OTROS DATOS
+		public function nombreCliente($idcliente){
+			require 'conexion.php';
+			$sql = $con->query("SELECT nom_cliente,ape_cliente FROM cliente WHERE id_cliente = '$idcliente' ");
+			$result = $sql->fetch_row();
+			return $result[0]." ".$result[1];
+		}
+		public function obtenerTotal($idventa,$idprodu){
+			require 'conexion.php';
+			$sqlp = $con->query("SELECT cantidad,precio_venta,descuento_ven FROM detalleventa WHERE id_detalleventa = '$idventa' ");
+			$total = 0;
+			while ($result = $sqlp->fetch_row()) {
+				$total=$total+(($result[1]-$result[2])*$result[0]);
+			}
+			return $total;
+		}
+
+		public function totalPartida($idrep){
+			require 'conexion.php';
+			$sqlre = $con->query("SELECT cantidad_re FROM repartidor WHERE id_repartidor = '$idrep' ");
+			$total=0;
+			while ($result=$sqlre->fetch_row()){
+				$total=$total+$result[0];
+			}
+			return $total;
+		}
+
+		public function obtenerMonto($idliqi){
+			require 'conexion.php';
+			$sql=$con->query("SELECT saldo_li,gasto_li FROM liquidar WHERE id_liquidar='$idliqi' ");
+			$total = 0;
+			while ($result = $sql->fetch_row()) {
+				$total=$total+($result[0]-$result[1]);
+			}
+			return $total;
+
+		}
+		public function nombreProducto($idprod){
+			require 'conexion.php';
+			$sql=$con->query("SELECT nom_producto FROM producto WHERE id_producto= '$idprod' ");
+			$result = $sql->fetch_row();
+			return $result[0];
+		}
+		public function nombreProveedor($idprove){
+			require 'conexion.php';
+			$sql=$con->query("SELECT razon_social FROM proveedor WHERE id_proveedor= '$idprove' ");
+			$result = $sql->fetch_row();
+			return $result[0];
+		}
+		
+		public function nombreEmpleado($idemp){
+			require 'conexion.php';
+			$sql = $con->query("SELECT nom_emp,ape_emp FROM empleado WHERE id_emp = '$idemp' ");
+			$result = $sql->fetch_row();
+			return $result[0]." ".$result[1];
+		}
+		
 		// -------Aqui empezaremos a crear la funcion para ------------ CREAR RECARGA ---------------
 		public function FolioRecarga(){
 			require 'conexion.php';
@@ -386,9 +396,7 @@
 			for ($i=0; $i < count($datos) ; $i++){
 				$d=explode("||", $datos[$i]);
 				$sql=$con->query("INSERT INTO detalleingreso (id_detalleingreso,
-														precio_ingreso,
 														cantidad_ingreso,
-														descuento_compra,
 														fecha_compra,
 														tipo_compra,
 														id_producto,
@@ -396,9 +404,7 @@
 														id_proveedor)
 														 
 									VALUES ('$idcompra',
-											'$d[11]',
 											'$d[7]',
-											'$d[8]',
 											'$fechacompra',
 											'$d[2]',
 											'$d[3]',

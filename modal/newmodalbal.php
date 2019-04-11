@@ -77,8 +77,8 @@
       <div class="modal-footer">
         <div class="row">
           <div class="col-sm-12 justify-content-start">
-            <button id="agregabal" type="button" class="btn btn-purple-secondary"><i class="fas fa-save fa-xs mr-2"></i> Guardar</button>
-            <button type="button" class="btn btn-close-secondary" data-dismiss="modal"><i class="fas fa-times fa-xs mr-2"></i> Cerrar</button>
+            <button id="agregabal" type="button" class="btn btn-success-melody"><i class="fas fa-save mr-2"></i> Guardar</button>
+            <button type="button" class="btn btn-light-melody" data-dismiss="modal"><i class="fas fa-times mr-2"></i> Cerrar</button>
           </div>
         </div>
         

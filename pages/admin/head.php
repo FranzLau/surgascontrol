@@ -2,7 +2,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/ico" href="../../assets/css/img/log.ico">
-    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <!--<link rel="stylesheet" href="../../assets/css/style.css">-->
+    <link rel="stylesheet" href="../../assets/css/melody.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" media="print">

@@ -3,6 +3,6 @@
 	require '../../config/ventas.php';
 
 	$obj = new ventas();
-	echo json_encode($obj->obtenDetallesRepartidor($_POST['idrepartidor']));
+	echo json_encode($obj->obtenDatosRepartidor($_POST['idrepartidor']));
 
  ?>

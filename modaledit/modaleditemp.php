@@ -95,9 +95,9 @@
             </div>
             <div class="col-md-5"><!--<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
               <div class="row form-group">
-                <label for="selestadoE" class="col-md-4 col-form-label col-form-label-sm">Estado</label>
+                <label for="estadoEmp" class="col-md-4 col-form-label col-form-label-sm">Estado</label>
                 <div class="col-md-8">
-                  <select name="selestadoE" id="selestadoE" class="form-control form-control-sm">
+                  <select name="estadoEmp" id="estadoEmp" class="form-control form-control-sm">
                     <option selected style="display:none">Elije una...</option>
                     <option value="Activo">Activo</option>
                     <option value="Inactivo">Inactivo</option>
@@ -126,8 +126,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button id="editarEmp" type="button" class="btn btn-warning-secondary"><i class="fas fa-edit"></i> Editar</button>
-        <button type="button" class="btn btn-close-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
+        <button id="editarEmp" type="button" class="btn btn-warning-melody"><i class="fas fa-edit"></i> Editar</button>
+        <button type="button" class="btn btn-light-melody" data-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
       </div>
     </div>
   </div>

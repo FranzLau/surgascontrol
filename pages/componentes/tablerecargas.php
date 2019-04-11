@@ -29,7 +29,7 @@ $sqlr = $con->query("SELECT * FROM recarga WHERE fecha_recarga='$recfecha' GROUP
          <td><?php echo $obj->totalRecarga($verec[0]) ?></td>
          <td>S/. <?php echo $obj->montoRecarga($verec[0]) ?></td>
          <td>
-            <button class="btn btn-danger">PDF</button>
+            <button class="btn btn-danger-melody">PDF</button>
          </td>
       </tr>
       <?php } ?>

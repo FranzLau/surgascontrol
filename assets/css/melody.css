@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+body {
+    font-family: 'PT Sans', sans-serif;
+}
+p{
+    font-size: 0.8125rem;
+}
+.size-h2 {
+    font-size: 2.25rem!important;
+}
+.page-title {
+    color: #000000!important;
+    margin-bottom: 0!important;
+    font-size: 1.5rem!important;
+}
+.bg-navbar-primary {
+    background: linear-gradient(85deg, #392c70, #6a005b)!important;
+}
+/*------------------------------------------ Estilos para index resumen*/
+.badge.badge-pill {
+    border-radius: 10rem!important;
+}
+.badge-outline-success{
+    color: #04B76B!important;
+    border: 1px solid #04B76B!important;
+}
+.badge {
+    font-size: 0.8125rem!important;
+    font-weight: 400!important;
+    line-height: 1!important;
+    padding: .5rem .75rem!important;
+}
+/*----------------------------------------estilos de card al inicio con SVG*/
+.card .card-img-holder {
+	position: relative!important;
+}
+.card.card-img-holder .card-img-absolute {
+	position: absolute!important;
+	top: 0;
+	right: 0;
+	height: 100%;
+}
+.card-body-pad {
+	padding: 2.5rem 2.5rem!important;
+}
+.card-title{
+	color: #000;
+	margin-bottom: .75rem!important;
+	text-transform: capitalize;
+	font-family: "ubuntu-medium", sans-serif!important;
+	font-size: 1.125rem;
+}
+/*------------------------------estilos para fondos--------<<<<<<<-----*/
+.bg-gradient-primary{
+	background: linear-gradient(to right, #da8cff, #9a55ff);
+}
+.bg-gradient-danger{
+	background: linear-gradient(to right, #ffbf96, #fe7096);
+}
+.bg-gradient-info{
+	background: linear-gradient(to right, #90caf9, #047edf 99%);
+}
+.bg-gradient-success{
+	background: linear-gradient(to right, #84d9d2, #07cdae);
+}
+/*-------------------------------------------Botones para nuevos--------*/
+.btn:focus {
+    user-select: none!important;
+    
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out!important;
+}
+.btn-primary-melody {
+    color: #ffffff;
+    background-color: #392c70;
+    border-color: #392c70;
+}
+.btn-primary-melody:focus{
+    outline: none!important;
+    outline-offset: 0!important;
+    border: 1px solid transparent!important;
+    box-shadow: none!important;
+}
+.btn-primary-melody:hover{
+    cursor: pointer;
+    background-color: #2b2155;
+    border-color: #261c4b;
+}
+.btn-primary-melody:active{
+    color: #ffffff;
+    background-color: #261e4b;
+    border-color: #221a42;
+}
+.btn-danger-melody{
+    color: #ffffff;
+    background-color: #ff5e6d;
+    border-color: #ff5e6d;
+}
+.btn-danger-melody:hover {
+    cursor: pointer;
+    background-color: #ff384a;
+    border-color: #ff2b3f;
+}
+.btn-danger-melody:active{
+    background-color: #ff2b3f;
+    border-color: #ff1e33;
+}
+.btn-success-melody{
+    color: #ffffff;
+    background-color: #04b76b;
+    border-color: #04b76b;
+}
+.btn-success-melody:hover {
+    cursor: pointer;
+    background-color: #039255;
+    border-color: #03854e;
+}
+.btn-success-melody:active{
+    background-color: #03854e;
+    border-color: #037947;
+}
+.btn-light-melody {
+    color: #212529;
+    background-color: #e9e8ef;
+    border-color:  #e9e8ef;
+}
+.btn-light-melody:hover {
+    cursor: pointer;
+    background-color: #d3d1df;
+    border-color: #cccada;
+}
+.btn-light-melody:active {
+    color: #212529;
+    background-color: #cccada;
+    border-color: #c5c2d5;
+}
+.btn-info-melody {
+    color: #ffffff;
+    background-color: #0B94F7;
+    border-color: #0B94F7;
+}
+.btn-info-melody:hover {
+    cursor: pointer;
+    background-color: #077ed5;
+    border-color: #0777c8;
+}
+.btn-info-melody:active {
+    color: #ffffff;
+    background-color: #0777c8;
+    border-color: #0670bc;
+}
+.btn-warning-melody{
+    color: #212529;
+    background-color: #F5A623;
+    border-color: #F5A623;
+}
+.btn-warning-melody:hover{
+    cursor: pointer;
+    color: #212529;
+    background-color: #e7940b;
+    border-color: #db8c0a;
+}
+.btn-warning-melody:active{
+    color: #ffffff;
+    background-color: #db8c0a;
+    border-color: #cf8509;
+}
+/*----------------------Botones inversa-------------------*/
+.btn-inverse-warning{
+    background-color: rgba(245, 166, 35, 0.2);
+    background-image: none;
+    border-color: rgba(245, 166, 35, 0);
+    color: #f5a623;
+}
+.btn-inverse-warning:hover{
+    color: #ffffff;
+    background-color: #f5a623;
+    cursor: pointer;
+}
+.btn-inverse-danger {
+    background-color: rgba(255, 94, 109, 0.2);
+    background-image: none;
+    border-color: rgba(255, 94, 109, 0);
+    color: #FF5E6D;
+}
+.btn-inverse-danger:hover{
+    color: #ffffff;
+    background-color:#FF5E6D;
+    cursor: pointer;
+}
+/*---------------------------------------------------------------------*/
+.card {
+    border: 1px solid #e0e0ef!important;
+}
+.form-control {
+    border: 1px solid #e0e0ef!important;
+    font-weight: 400!important;
+    font-size: 0.8125rem!important;
+}
+ul {
+    font-size: 0.8125rem!important;
+}
+.nav-pills-primary .nav-link.active {
+    background: #392c70!important;
+}
+.nav-pills-primary .nav-link {
+    color: #392c70!important;
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+    color: #ffffff!important;
+}
+.nav-pills .nav-link {
+    border: 1px solid #e0e0ef!important;
+    padding: .5rem 1.75rem!important;
+    border-radius: 0.25rem!important;
+}
+.nav-pills .nav-item{
+    margin-left: 1rem!important;
+}
+.tab-content {
+    border: 1px solid #e0e0ef!important;
+    padding: 2rem 1rem!important;
+}
+.badge-success{
+    color: #ffffff!important;
+    border: 1px solid #04B76B!important;
+    background-color: #04B76B!important;
+}
+.footer {
+	font-size: calc(0.8125rem - 0.05rem);
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 400;
+}

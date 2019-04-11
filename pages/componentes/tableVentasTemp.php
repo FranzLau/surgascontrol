@@ -1,10 +1,9 @@
 <?php 
 	session_start();
 	//print_r($_SESSION['tablaCompraTemp']);
-
  ?>
- <div class="row mt-3">
-   <div class="col-sm-8">
+ <div class="row">
+   <div class="col-sm-12">
     <table class="table table-sm table-bordered">
       <thead>
         <tr>
@@ -35,7 +34,7 @@
           <td><?php echo $d[6]; ?></td>
           <td><?php echo $st=($d[4]-$d[7])*$d[3]; ?></td>
           <td>
-            <button class="btn btn-danger btn-sm" onclick="quitarP('<?php echo $i; ?>')"><i class="fas fa-trash"></i></button>
+            <button class="btn btn-danger-melody btn-sm" onclick="quitarP('<?php echo $i; ?>')"><i class="fas fa-trash"></i></button>
           </td>
         </tr>
         <?php
@@ -48,21 +47,25 @@
       </tbody>
     </table>
    </div>
+ </div>
+ <hr>
+ <div class="row align-items-center">
+   <div class="col-sm-1 text-right">
+    <i class="fas fa-shopping-cart"></i>
+   </div>
+   <div class="col-sm-5">
+    <input type="text" class="form-control"  id="clienteVent" readonly="">
+   </div>
+   <div class="col-sm-2 font-weight-bold">
+    <input type="text" class="form-control bg-dark" style="color: #6FF60B" readonly="" value="s/.<?php echo $total; ?>">
+   </div>
    <div class="col-sm-4">
-     <div class="card">
-       <div class="card-header bg-dark text-center">
-         <h3 style="color: #6FF60B">s/. <?php echo $total; ?></h3>
-       </div>
-       <div class="card-body">
-         <p><i class="fas fa-shopping-cart mr-2"></i><span id="clienteVent"></span></p>
-         <button class="btn btn-success w-100" onclick="crearVentas()"><i class="fas fa-save mr-2"></i>Generar Venta</button>
-       </div>
-     </div>
+    <button class="btn btn-success-melody w-100" onclick="crearVentas()"><i class="fas fa-save mr-2"></i>Generar Venta</button>
    </div>
  </div>
 <script>
   $(document).ready(function() {
     nombre = "<?php echo @$cliente ?>";
-    $('#clienteVent').text(nombre);
+    $('#clienteVent').val(nombre);
   });
 </script>

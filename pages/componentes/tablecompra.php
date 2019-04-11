@@ -31,7 +31,7 @@ $sql = $con->query("SELECT * FROM detalleingreso GROUP BY id_detalleingreso");
               ?>
             </td>
             <td>
-              <a href="../../procesos/ventas/crearReportepdf.php?idcompra=<?php echo $ver[0] ?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i> Reporte</a>
+              <a href="../../procesos/ventas/crearReportepdf.php?idcompra=<?php echo $ver[0] ?>" class="btn btn-sm btn-danger"><i class="fas fa-file-pdf"></i></a>
             </td>
          </tr>
          <?php

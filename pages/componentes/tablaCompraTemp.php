@@ -1,17 +1,14 @@
 <?php
 session_start();
 ?>
-<div class="row mt-3">
-  <div class="col-md-8">
+<div class="row">
+  <div class="col-sm-12">
     <table class="table table-sm table-bordered">
       <thead>
         <tr>
           <th scope="col">Cant.</th>
-          <th scope="col">Compra</th>
           <th scope="col">Producto</th>
-          <th scope="col">Precio</th>
-          <th scope="col">Desc.</th>
-          <th scope="col">Sub Total</th>
+          <th scope="col">Balon</th>
           <th scope="col">Quitar</th>
         </tr>
       </thead>
@@ -27,18 +24,15 @@ session_start();
         ?>
         <tr>
           <td><?php echo $d[7]; ?></td>
-          <td><?php echo $d[2]; ?></td>
           <td><?php echo $d[4]; ?></td>
-          <td><?php echo $d[11]; ?></td>
-          <td><?php echo $d[8]; ?></td>
-          <td><?php echo $st=($d[11]-$d[8])*$d[7]; ?></td>
+          <td><?php echo $d[2]; ?></td>
           <td>
             <button class="btn btn-danger btn-sm" onclick="quitarCompra('<?php echo $i; ?>')"><i class="fas fa-times"></i></button>
           </td>
         </tr>
 
         <?php
-          $total = $total + $st;
+          $total = $total + $d[7];
           $i++; 
           $cliente = $d[1];
           }
@@ -47,21 +41,24 @@ session_start();
       </tbody>
     </table>
   </div>
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-header bg-dark text-center">
-        <h3 style="color: #6FF60B">s/. <?php echo $total; ?></h3>
-      </div>
-      <div class="card-body">
-        <p><i class="fas fa-tag mr-2"></i><span id="ProveCompra"></span></p>
-        <button class="btn btn-success w-100" onclick="crearCompra()"><i class="fas fa-save mr-2"></i>Generar Compra</button>
-      </div>
-    </div>
+</div>
+<div class="row align-items-center">
+  <div class="col-sm-1 text-right">
+    <i class="fas fa-tag"></i>
+  </div>
+  <div class="col-sm-5">
+    <input type="text" class="form-control form-control-sm" id="ProveCompra" readonly="">
+  </div>
+  <div class="col-sm-2">
+    <input type="text" class="form-control form-control-sm" readonly="" value="<?php echo $total; ?>">
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-success-melody btn-sm w-100" onclick="crearCompra()"><i class="fas fa-save mr-2"></i>Generar Compra</button>
   </div>
 </div>
 <script>
   $(document).ready(function() {
     nombre = "<?php echo @$cliente ?>";
-    $('#ProveCompra').text(nombre);
+    $('#ProveCompra').val(nombre);
   });
 </script>

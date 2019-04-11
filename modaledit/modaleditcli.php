@@ -65,8 +65,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button id="btneditcli" type="button" class="btn btn-warning-secondary"><i class="fas fa-pencil-alt"></i> Editar</button>
-        <button type="button" class="btn btn-close-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
+        <button id="btneditcli" type="button" class="btn btn-warning-melody"><i class="fas fa-pencil-alt"></i> Editar</button>
+        <button type="button" class="btn btn-light-melody" data-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
       </div>
     </div>
   </div>

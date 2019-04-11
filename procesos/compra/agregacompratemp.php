@@ -4,37 +4,27 @@ require '../../config/conexion.php';
 
 $idprovecompra = $_POST['provCompra'];
 $tipocompra = $_POST['compCompra'];
-//$bestadocompra = $_POST['tipoCompra'];
 $idprodcompra = $_POST['prodCompra'];
-$bllenocompra = $_POST['llenoCompra'];
-$bvaciocompra = $_POST['vacioCompra'];
 $cantidacompra = $_POST['cantCompra'];
-$descuencompra = $_POST['descCompra'];
-$pzonalcompra = $_POST['precZonal'];
-$penvasecompra = $_POST['precEnvase'];
-$montocompra = $_POST['precMonto'];
 
 $sql=$con->query("SELECT razon_social FROM proveedor WHERE id_proveedor= '$idprovecompra' ");
 $c = $sql->fetch_row();
 $nomprovcompra = $c[0];
 
-$sql=$con->query("SELECT nom_producto FROM producto WHERE id_producto = '$idprodcompra' ");
+$sql=$con->query("SELECT nom_producto,stock_llenos,stock_vacios FROM producto WHERE id_producto = '$idprodcompra' ");
 $p = $sql->fetch_row();
 $nomprodcompra = $p[0];
+$bllenocompra = $p[1];
+$bvaciocompra = $p[2];
 
 $articulo = $idprovecompra."||".
             $nomprovcompra."||".
             $tipocompra."||".
-            //$bestadocompra."||".
             $idprodcompra."||".
             $nomprodcompra."||".
             $bllenocompra."||".
             $bvaciocompra."||".
-            $cantidacompra."||".
-            $descuencompra."||".
-            $pzonalcompra."||".
-            $penvasecompra."||".
-            $montocompra;
+            $cantidacompra;
 
 if ($tipocompra=="G") {
     if ($bvaciocompra == 0) {

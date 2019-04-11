@@ -31,10 +31,10 @@
               <td><?php echo $mostrarprov[8] ?></td> 
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-purple-warning btn-sm" title="Editar" data-toggle="modal" data-target="#editabalModalCenter" onclick="agregaeditarbal('<?php echo $mostrarprov[0] ?>')"><i class="fas fa-edit"></i></button>
+                  <button type="button" class="btn btn-inverse-warning btn-sm" title="Editar" data-toggle="modal" data-target="#editabalModalCenter" onclick="agregaeditarbal('<?php echo $mostrarprov[0] ?>')"><i class="fas fa-edit"></i></button>
                   <?php if ($_SESSION['loggedIN']['acceso_emp'] == "Administrador"):
                   ?>
-                  <button type="button" class="btn btn-purple-danger btn-sm" title="Eliminar" onclick="eliminargalon('<?php echo $mostrarprov[0] ?>')"><i class="fas fa-trash-alt"></i></button>
+                  <button type="button" class="btn btn-inverse-danger btn-sm" title="Eliminar" onclick="eliminargalon('<?php echo $mostrarprov[0] ?>')"><i class="fas fa-trash-alt"></i></button>
                   <?php endif; ?>
                 </div>
               </td>

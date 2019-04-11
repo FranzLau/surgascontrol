@@ -13,23 +13,37 @@
     <?php include('../../modal/modalemp.php'); ?>
     <?php include('navbar.php'); ?>
 
-      <div class="container">
-        <div class="row mt-5">
-          <div class="col-sm-6 text-center text-lg-left d-md-flex">
-            <h4 class="my-auto font-primary">LISTA DE <strong>EMPLEADOS</strong></h4>
-          </div>
-          <div class="col-sm-6 text-center text-lg-right">
-            <button type="button" class="btn btn-green-secondary" data-toggle="modal" data-target="#empModalCenter"><i class="far fa-file fa-sm mr-2"></i> Nuevo Empleado</button>
+    <div class="container">
+        <!--<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+      <!--<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+      <div class="row mt-5">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-6 text-center text-lg-left d-md-flex">
+                  <h4 class="my-auto font-primary"><i class="far fa-address-card mr-3"></i>Empleados</h4>
+                </div>
+                <div class="col-sm-6 text-center text-lg-right">
+                  <button type="button" class="btn btn-primary-melody" data-toggle="modal" data-target="#empModalCenter"><i class="far fa-file fa-sm mr-2"></i> Nuevo Empleado</button>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-sm-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <div id="tabEmp"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
           </div>
         </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-12">
-            <div id="tabEmp"></div>
-          </div>
-        </div>  
-      </div>
-    
+      </div>  
+        <!--<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
+    </div>
     <?php include('scripts.php'); ?>
     <script type="text/javascript">
       $(document).ready(function() {
